@@ -1,0 +1,1 @@
+"use strict";require(["../../static/conf/config.js"],function(){require(["jquery","sw"],function(c,e){console.log(c)})});

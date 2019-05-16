@@ -1,0 +1,8 @@
+@import "../base";
+
+$val : 20px;
+html {
+	font-size: $val;
+	height: 100%;
+	background: red;
+}
