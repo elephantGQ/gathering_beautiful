@@ -68,14 +68,29 @@ gulp.task("server",()=>{
 		res.setHeader("Access-Control-Allow-Origin","*"); //cors
 		res.setHeader("Content-Type","text/plain; charset=utf8")
 		let proxy = http.request({
-			hostname: "bj.jumei.com",
-			path: "/Ajax/GetHomeTodayLists/100/1",
+			hostname: "sh.jumei.com",
+            path: "/Ajax/GetHomeTodayLists/100/1",
 			method: 'get'
 		}, (response) => {
 			response.pipe(res);
 		});
 		proxy.end();
-	});
+    });
+    app.get("/test", (req,res)=>{
+		res.setHeader("Access-Control-Allow-Origin","*"); //cors
+		res.setHeader("Content-Type","text/plain; charset=utf8")
+		res.setHeader("Accept","application/json, text/javascript, */*; q=0.01")
+        res.setHeader("Cookie","PHPSESSID=mrk8sr2sf4688f1r8sqd8mgf4t; _csrf=3975d459229e99679f14f0b519e437447725805269db8453628e94ea8ad2b209a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22heeUCXM9GMh4d5AmvkJt3-vhcYKY4pi_%22%3B%7D; Hm_lvt_b78b855beb1ef43b5411c934b93bb0b3=1558175573; Hm_lpvt_b78b855beb1ef43b5411c934b93bb0b3=1558175584")
+
+		let proxy = https.request({
+			hostname: "zshpldbz.com",
+			path: `/index/choicegoods.html?sort=new&size=20&p=1`,
+			method: 'get'
+		}, (response) => {
+			response.pipe(res);
+		});
+		proxy.end();
+	})
     app.listen(8000);
 })
 gulp.task("build", ["compileJS","compileHTML","compileCSS"])

@@ -1,0 +1,276 @@
+.w960{
+    width: 960px;
+    margin: 0 auto;
+}
+.coreCoin{
+    display: block;
+    float: left;
+    background: url("../../../imgs/regist/imgs/header_corn_new_v2.png");
+}
+#header{
+    width: 100%;
+    height: 85px;
+    .logo{
+        float: left;
+        width: 165px;
+        height: 85px;
+        display: block;
+        // header_corn_new_v2.png
+        background: url("../../../imgs/regist/imgs/logo_new_v1.jpg");
+    }
+    .headerRight{
+        float: right;
+        padding-top:35px;
+    }
+    .right_1{
+        width: 110px;
+        height: 31px;
+        margin-right:24px;
+        // background-position: -6px 0;
+    }
+    .right_3{
+        width: 110px;
+        height: 31px;
+        margin-right:24px;
+        background-position: 0px -64px;
+    }
+    .right_2{
+        width: 170px;
+        height: 31px;
+        margin-right:24px;
+        background: url("../../../imgs/regist/imgs/gild.png");
+        float: left;
+    }
+}
+#center{
+    height: 418px;
+    margin-bottom: 50px; 
+    .loginWrap{
+        margin: 50px 0;
+        position: relative;
+        .loginImg{
+            width: 960px;
+            height: 360px;
+            background: url("../../../imgs/regist/imgs/loginpic.jpg")
+        }
+        .loginBord{
+           
+            position: absolute;
+            right: 0;
+            top:-10px;
+            width: 300px;
+            height: 418px;
+            padding: 0 23px;
+            // background: red;
+            box-shadow: 0 0 4px rgba(0,0,0,.075);
+            .BordHeightLeft{
+                width: 80px;
+                float: left;
+                height: 60px;
+                margin-bottom: 15px;
+                span{
+                    font-size: 20px;
+                    font-weight: 900;
+                    color: #e31256;
+                    height: 60px;
+                    width: 80px;
+                    line-height: 60px;
+                    display: block;
+                
+                }
+            }
+            .BordHeightRight{
+                float: right;
+                font-size: 12px;
+                line-height: 60px;
+                color: #969696;
+                height: 60px;
+                width: 148px;
+                a{
+                   
+                    color: #ed145b;
+                    font-size: 12px;
+                    line-height: 60px;
+                }
+            }
+        }
+    }
+    .loginOpt{
+        clear: both;
+        width: 100%;
+        height: 30px;
+        
+        div{
+            float: left;
+            label{
+                
+                color: #000;
+                margin-right: 30px;
+                font-size: 12px;
+            }
+        }
+       
+    }
+    #login-dynamic-form{
+        .user{
+            
+            border: 1px solid #ccc;
+            
+        margin-bottom: 26px;
+            overflow: hidden;
+            #telPhone{
+                border: 0;
+                width: 100%;
+                height: 43px;
+                background: url("../../../imgs/regist/imgs/sign.png") no-repeat center left;
+                background-position: 0 0;
+                padding-left:43px; 
+            }   
+               }
+        .telDiv{
+            margin: 10px 0 30px;
+            width: 100%;
+            height: 44px;
+            .codePwd{
+                border: 1px solid #ccc;
+                overflow: hidden;
+                float: left;
+                #code{
+                    border: 0;
+                    width: 93px;
+                    height: 43px;
+                    background: url("../../../imgs/regist/imgs/sign.png") no-repeat center left;
+                    background-position: 0 -48px;
+                    padding-left:43px; 
+                }
+            }
+                .telCode{
+                    display: block;
+                    width: 130px;
+                    height: 41px;
+                    border: 1px solid #d9d9d9;
+                    line-height: 41px;
+                    height: 41px;
+                    font-size: 12px;
+                    font-weight: 700;
+                    color: #666;
+                    background: #fcfcfc;
+                    float: right;
+                    padding: 0 8px;
+                    text-align: center;
+                }
+        }
+        
+        p{
+            width: 100%;
+            height: 18px;
+            clear: both;
+            line-height: 1.5;
+            margin: 10px 0;
+           label{
+               font-size: 12px;
+           }
+        }
+        #submitButton{
+            display: block;
+            width: 100%;
+            background: #e5406f;
+            height: 40px;
+            font-weight: 600px;
+            text-align: center;
+            font-size: 14px;
+            border: #e5406f;
+            color:#fff;
+            margin-bottom: 10px;
+        }
+    }
+    .iconAccount{
+        div{
+            // margin: 0  0 10px;
+            padding: 5px 0 10px;
+            font-size: 12px;
+         
+        }
+        p{
+            a{
+                display: block;
+                border-radius: 50%;
+               float: left;
+                width: 43px;
+                height: 43px;
+                margin-right: 10px;
+                background: url(../../../imgs/regist//imgs/icon_light.jpg)
+            }
+            .a1{
+                background-position: 0 0;
+            }
+            .a2 {
+                background-position: -57px 0;
+            }
+            .a3{
+                background-position: -114px 0;
+            }
+            .a4 {
+                background-position: -169px 0;
+            }
+            .a5 {
+                background-position: -224px 0;
+            }
+            span{
+                line-height: 30px;
+                position: relative;
+                left: -7px;
+                cursor: pointer;
+                float: left;
+                margin-top: 5px;
+                font-size: 12px;
+            }
+        }
+        
+    }
+}
+.footer{
+    width:100%;
+    margin-bottom: 80px;
+    // text-align: center;
+    .footCon{
+        width: 1090px;
+        margin: 0 auto;
+        text-align: center;
+        p{
+            color: #000;
+            padding: 14px 0 18px;
+            line-height: 23px;
+            font-size: 12px;
+            a{
+            line-height: 23px;
+            font-size: 12px;
+            color: #000;
+            }
+        }
+    }
+    .bottomUL{
+        width: 1090px;
+        height: 50px;
+        text-align: center;
+        ul{
+            display: inline-block;
+            // width: 670px;
+            height: 50px;
+            li{
+                float: left;
+                width: 126px;
+                height: 50px;
+                overflow: hidden;
+                margin-right: 8px;
+                background: url("../../../imgs/header_corn_new_v2.png")
+            }
+            .specialLi{
+                width: 55px;
+                height: 50px;
+                background: url("../../../imgs/bz.jpg")
+            }
+        }
+    }
+
+}
