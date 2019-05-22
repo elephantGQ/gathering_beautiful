@@ -6,16 +6,6 @@
     display: block;
     float: left;
     background: url("../../../imgs/regist/imgs/header_corn_new_v2.png");
-    
-}
-i{
-    display: inline-block;
-    // margin-top: -10px;
-    float: left;
-    height: 20px;
-    width: 20px;
-    background: url("../../../imgs/sign.png") no-repeat;
-    background-position-y: -104px;
 }
 #header{
     width: 100%;
@@ -53,23 +43,23 @@ i{
     }
 }
 #center{
-    height: 477px;
+    height: 418px;
     margin-bottom: 50px; 
     .loginWrap{
-        margin: 120px 0;
+        margin: 50px 0;
         position: relative;
         .loginImg{
             width: 960px;
             height: 360px;
-            background: url("../../../imgs/signPic.jpg")
+            background: url("../../../imgs/regist/imgs/loginpic.jpg")
         }
         .loginBord{
            
             position: absolute;
             right: 0;
-            top:-80px;
-            width: 310px;
-            height: 477px;
+            top:-10px;
+            width: 300px;
+            height: 418px;
             padding: 0 23px;
             // background: red;
             box-shadow: 0 0 4px rgba(0,0,0,.075);
@@ -103,49 +93,32 @@ i{
                     line-height: 60px;
                 }
             }
-            .xyi{
-                a{
-                    color: #ed145b;
-                    font-size: 12px;
-                }
-            }
         }
     }
     .loginOpt{
         clear: both;
+        width: 100%;
+        height: 30px;
+        
+        div{
+            float: left;
+            label{
+                
+                color: #000;
+                margin-right: 30px;
+                font-size: 12px;
+            }
+        }
        
     }
     #login-dynamic-form{
-        clear: both;
-        .focus_text{
-            display: none;
-            color: #999;
-            font-size: 12px;
-            position: absolute;
-            top: 108%;
-            left: 0;
-        }
-        .error,.error1{
-            display: none;
-            color: #999;
-            font-size: 12px;
-            position: absolute;
-            top: 108%;
-            left: 0;
-            .msg{
-                width:310px;
-            }
-        }
-        .telephone,.passWord{
-            position: relative;
-        }
-        .border_Style{
+        .user{
             
             border: 1px solid #ccc;
             
         margin-bottom: 26px;
             overflow: hidden;
-            .inputStyle{
+            #telPhone{
                 border: 0;
                 width: 100%;
                 height: 43px;
@@ -158,7 +131,6 @@ i{
             margin: 10px 0 30px;
             width: 100%;
             height: 44px;
-            position: relative;
             .codePwd{
                 border: 1px solid #ccc;
                 overflow: hidden;
@@ -202,12 +174,12 @@ i{
         #submitButton{
             display: block;
             width: 100%;
-            background: #F8296D;
+            background: #e5406f;
             height: 40px;
             font-weight: 600px;
             text-align: center;
             font-size: 14px;
-            border: #F8296D;
+            border: #e5406f;
             color:#fff;
             margin-bottom: 10px;
         }

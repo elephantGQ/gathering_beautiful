@@ -12,8 +12,9 @@
 
 	
 	<% _.forEach(data.list,function(ele){%>
+		<%if(ele.deal_category!="media"){%>
 			<li class="productBox">
-					<a  href="#" class="imgDetail">
+					<a  href="http://localhost:9999/pages/detail/detail.html?item_id=<%-ele.deal_hid%>" class="imgDetail">
 						<% if(ele.is_wh) {%>
 						<img src="<%-ele.deal_img%>" class="iswh">
 						<%}else{%>
@@ -23,6 +24,7 @@
 						<div class="logo"></div>
 						<%}%>
 					</a>
+					<!-- 
 					<div class="coverOn">
 							<a class="cartBox">加入购物车</a>
 							<% if(ele.is_wh) {%>
@@ -31,6 +33,7 @@
 								<div class="bottomAreaGn">新品上线，赶快来试试吧</div>
 								<%}%>
 					</div>
+					 -->
 						<div class="product_detail">
 								<p class="title"><span class="pink">【官方授权】</span><%-ele.deal_tit%></p>
 								<% if(typeof ele.deal_group != "undefined"){ %>
@@ -40,7 +43,8 @@
 									<%}%>
 							</div>
 				</li>
-	<%})%>
+				<%}})%>
+	
 </script>
 
 <body>
@@ -317,6 +321,7 @@
 					
 					<div class="today_new_productlist">
 						<ul class="productlist">
+							<!--  
 								<li class="productBox">
 										<a  href="#" class="imgDetail">
 											
@@ -337,7 +342,7 @@
 													
 												</div>
 									</li>
-									
+								-->	
 						</ul>
 					</div>
 		</div>

@@ -27,50 +27,53 @@
 					<div class="loginImg"></div>
 					<div class="loginBord">
 						<div class="BordHeight">
-						<div class="BordHeightLeft"><span>登录聚美</span></div>
+						<div class="BordHeightLeft"><span>用户注册</span></div>
 						<div class="BordHeightRight">
-								还没有聚美帐号？<a href="#">30秒注册</a>
+								已有帐号<a href="../login/login.html">在此登录</a>
 						</div>
 					</div>
 					<div class="loginOpt">
-						<div>
-								<input name="method" type="radio" rel="login-dynamic-form"  value="" id="loginRadio1">
-								<label for="loginRadio1"> 手机动态密码登录</label>
-						</div>
-						<div>
-								<input name="method" rel="login-user-form" type="radio" value="" id="loginRadio2">
-								<label for="loginRadio2"> 普通登录</label>
-						</div>
-					
 					</div>
-					<from id="login-dynamic-form">
-						<div class="user">
-								<input type="text"  id="telPhone" placeholder="已注册的手机号码">
-						</div>
+					<from id="login-dynamic-form"> 
+                        <div class="telephone">
+                                <div class="border_Style">
+                                        <input type="text" class="inputStyle" id="telPhone" placeholder="手机号">
+                                </div>
+                                <div class="focus_text">请输入11位手机号码</div>
+                                <div class="error"><i></i><div class="msg">您输入的手机号码格式有误，需为 11 位数字格式</div></div>
+                        </div>
 						<div class="telDiv">
+                           
 								<div class="codePwd">
-										<input type="text" id="code"  placeholder="动态密码">
+										<input type="text" id="code"  placeholder="短信校验码">
 										</div> 
-									<a href="#" class="telCode">获取手机动态验证码</a>
+                                    <a href="#" class="telCode">获取短信校验码</a>
+                                    <div class="focus_text">请输入6位短信校验码</div>
+                                    <div class="error"><i></i><div class="msg">请点击获取短信验证码</div></div>
+                        </div>
+                        <div class="passWord">
+                                <div class="border_Style">
+                                        <input type="text" class="inputStyle" id="pwd" placeholder="密码">
+                                </div>
+                                <div class="focus_text">6-16个字符，建议使用字母加数字或符号组合</div>
+                                <div class="error"><i></i><div class="msg">密码不能使用纯数字、纯字母、纯符号</div></div>
+                                <div class="error1"><i></i><div class="msg">为了您的账号安全，密码长度只能在 6-16 个字符之间</div></div>
+                                
+                        </div>
+                        <div class="passWord">
+                        <div class="border_Style">
+								<input type="text" class="inputStyle" id="pwdAgain" placeholder="重复密码">
+                        </div>
+                        <div class="focus_text">请再次输入密码</div>
+                        <div class="error"><i></i><div class="msg">两次密码输入不一致，请重新输入</div></div>
 						</div>
-						<p><label for="dynamic_auto_login">
-								<input type="checkbox" id="dynamic_auto_login" checked="">
-								&nbsp;自动登录
-							</label></p>
-						<input type="submit" name="" value="登陆" id="submitButton"></input></from>
+						<input type="submit" name="" value="同意协议并注册" id="submitButton"></input></from>
 					</from>
-					<from id="login-user-form"></from>
-					<div class="iconAccount">
-							<div>你也可以使用以下帐号登录</div>
-							<p>
-								<a href="#" class="a1"></a>
-								<a href="#" class="a2"></a>
-								<a href="#" class="a3"></a>
-								<a href="#" class="a4"></a>
-								<a href="#" class="a5"></a>
-								<span>更多<i></i></span>
-							</p>
-					</div>
+					<p class="xyi">
+                            <a href="http://www.jumei.com/i/help/user_terms" rel="nofollow" target="_blank" style="color:#ed145b;">《聚美优品用户协议》</a>
+                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="http://www.jumei.com/help/privacy_policy" rel="nofollow" target="_blank" style="color:#ed145b;">《聚美隐私权政策》</a>
+                        </p>
 					</div>
 				</div>
 			</div>
@@ -99,7 +102,5 @@
 		</div>
 	</body>
 	
-	<script>
-		
-	</script>
+	<script src="../../static/scripts/require.js" data-main="regist.js" type="text/javascript" charset="utf-8"></script>
 </html>

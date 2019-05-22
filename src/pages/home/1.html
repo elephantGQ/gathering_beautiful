@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href=""/>
+		<style>
+           div{
+               width: 800px;
+               overflow: hidden;
+           }
+        .iframe2{
+	height:10000px;
+	display:block;
+    overflow:hidden;
+    margin:0;
+    padding:0;
+    border:0;
+}
+
+        </style>
+	</head>
+	
+	<body>
+        <div>
+                
+        </div>
+               </body>
+               <script src="../../static/scripts/require.js" data-main="home.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		$.ajax({
+						type:"GET",
+						url:"http://localhost:8000/tCong",
+						dataType:"json",
+						success:function(res){
+							console.log(res);
+						}
+					})
+	</script>
+</html>

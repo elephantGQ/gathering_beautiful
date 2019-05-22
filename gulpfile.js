@@ -76,21 +76,105 @@ gulp.task("server",()=>{
 		});
 		proxy.end();
     });
-    app.get("/test", (req,res)=>{
+    app.get("/search", (req,res)=>{
 		res.setHeader("Access-Control-Allow-Origin","*"); //cors
 		res.setHeader("Content-Type","text/plain; charset=utf8")
-		res.setHeader("Accept","application/json, text/javascript, */*; q=0.01")
-        res.setHeader("Cookie","PHPSESSID=mrk8sr2sf4688f1r8sqd8mgf4t; _csrf=3975d459229e99679f14f0b519e437447725805269db8453628e94ea8ad2b209a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22heeUCXM9GMh4d5AmvkJt3-vhcYKY4pi_%22%3B%7D; Hm_lvt_b78b855beb1ef43b5411c934b93bb0b3=1558175573; Hm_lpvt_b78b855beb1ef43b5411c934b93bb0b3=1558175584")
-
+		let proxy = http.request({
+            /*
+            https://s.mobile.jumei.com/api/v1/product/detailStatic?ab=3%3Ac%7C7%3Ac%7C114%3Aa11%7C120%3Ac%7C123%3Ab%7C131%3Ac%7C150%3Aa%7C160%3Ac%7C164%3Av6%7C166%3Ab%7C177%3Avideo2t6%7C179%3Avideo3t2%7C186%3Avideo4t11%7C191%3Ac%7C241%3Ac%7C242%3Ab%7C281%3Av6%7C666%3Ab%7C673%3Ac%7C703%3Awvgre_a%7C909%3Aa%7C1001%3Ab%7C1200%3Aa6%7C1300%3Anormal%7C1655%3Av6%7C1806%3Anormal%7C1807%3Af%7C1808%3Aa11%7C1809%3Aa11%7C1810%3Anormal%7C6680%3Aa%7C8998%3Ab%7C9081%3Ac%7C9091%3Ab%7C9108%3Avideofeedb%7C9902%3Ae1%7C73162%3Ad%7C73163%3Ac%7C73164%3Af&antifraud_sign=f296b56d8f0ff41289f9087bf1f4aae6&antifraud_tid=931266086&antifraud_ts=1558337446&app_id=com.jumei.iphone&appfirstinstall=1&client_v=8.000&global_init_log_device_model=iPhone10%2C3&global_init_log_device_vendor=apple&global_init_log_os_version=12.1.1&global_init_log_push_enable=off&global_init_log_push_id=101d855909049cb68d3%2C570eb3520274a418e0ec098a36e6df6f&item_id=d190426p3284720&platform=iphone&selllabel=%E8%8A%B1%E5%8D%B0%E6%B8%85%E6%96%B0%E5%87%80%E9%A2%9C%E5%8D%B8%E5%A6%86%E6%B0%B4%E5%A5%97%E7%BB%84&selltype=mSearch&site=bj&source=AppstoreI1&type=jumei_deal&user_tag_id=131
+            */
+			hostname: "s.mobile.jumei.com",
+            path: "/api/v1/product/detailStatic?ab=3%3Ac%7C7%3Ac%7C114%3Aa11%7C120%3Ac%7C123%3Ab%7C131%3Ac%7C150%3Aa%7C160%3Ac%7C164%3Av6%7C166%3Ab%7C177%3Avideo2t6%7C179%3Avideo3t2%7C186%3Avideo4t11%7C191%3Ac%7C241%3Ac%7C242%3Ab%7C281%3Av6%7C666%3Ab%7C673%3Ac%7C703%3Awvgre_a%7C909%3Aa%7C1001%3Ab%7C1200%3Aa6%7C1300%3Anormal%7C1655%3Av6%7C1806%3Anormal%7C1807%3Af%7C1808%3Aa11%7C1809%3Aa11%7C1810%3Anormal%7C6680%3Aa%7C8998%3Ab%7C9081%3Ac%7C9091%3Ab%7C9108%3Avideofeedb%7C9902%3Ae1%7C73162%3Ad%7C73163%3Ac%7C73164%3Af&antifraud_sign=f296b56d8f0ff41289f9087bf1f4aae6&antifraud_tid=931266086&antifraud_ts=1558337446&app_id=com.jumei.iphone&appfirstinstall=1&client_v=8.000&global_init_log_device_model=iPhone10%2C3&global_init_log_device_vendor=apple&global_init_log_os_version=12.1.1&global_init_log_push_enable=off&global_init_log_push_id=101d855909049cb68d3%2C570eb3520274a418e0ec098a36e6df6f&item_id=d190426p3284720&platform=iphone&selllabel=%E8%8A%B1%E5%8D%B0%E6%B8%85%E6%96%B0%E5%87%80%E9%A2%9C%E5%8D%B8%E5%A6%86%E6%B0%B4%E5%A5%97%E7%BB%84&selltype=mSearch&site=bj&source=AppstoreI1&type=jumei_deal&user_tag_id=131",
+            method: 'get'
+           
+		}, (response) => {
+			response.pipe(res);
+		});
+		proxy.end();
+    });
+    app.get("/detail", (req,res)=>{
+		res.setHeader("Access-Control-Allow-Origin","*"); //cors
+        res.setHeader("Content-Type","text/plain; charset=utf8")
+        // console.log(req);
+        let urlReq=res.req._parsedUrl.search;
+    	let proxy = https.request({
+            hostname: "api.jumei.com",
+			path: `/Product/DetailDynamic${urlReq}&client_v=8.000&global_init_log_push_enable=off&platform=iphone1&type=jumei_deal`,
+            method: 'get',
+            headers: {
+				'Content-Type': 'text/html',
+				
+				'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36'
+			}
+		}, (response) => {
+			response.pipe(res);
+		});
+		proxy.end();
+    });
+    app.get("/detailMore", (req,res)=>{
+		res.setHeader("Access-Control-Allow-Origin","*"); //cors
+        res.setHeader("Content-Type","text/plain; charset=utf8")
+        // https://s.mobile.jumei.com/api/v1/product/detailStatic?&client_v=8.000&global_init_log_push_enable=off&platform=iphone&type=jumei_deal&item_id=d190426p3284720
+        let urlReq=res.req._parsedUrl.search;
+    	let proxy = https.request({
+            hostname: "s.mobile.jumei.com",
+			path: `/api/v1/product/detailStatic${urlReq}&client_v=8.000&global_init_log_push_enable=off&platform=iphone&type=jumei_deal`,
+            method: 'get',
+            headers: {
+				'Content-Type': 'text/html',
+				
+				'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36'
+			}
+		}, (response) => {
+			response.pipe(res);
+		});
+		proxy.end();
+    });
+    app.get("/test", (req,res)=>{
+		res.setHeader("Access-Control-Allow-Origin","*"); //cors
+        res.setHeader("Content-Type","text/html; charset=utf8")
+        /*
+http://s.h5.jumei.com/mobile/deal/product_union?type=jumei_deal&item_id=d190426p3284720
+        */
+    //    console.log(res.req.query);
+       let urlReq=res.req.query["item_id"];
 		let proxy = https.request({
-			hostname: "zshpldbz.com",
-			path: `/index/choicegoods.html?sort=new&size=20&p=1`,
-			method: 'get'
+			hostname: "s.h5.jumei.com",
+			path: `/mobile/deal/product_union?type=jumei_deal&item_id=${urlReq}`,
+            method: 'get',
+            headers: {
+				'Content-Type': 'text/html',
+				// 'Content-Length' : 2149,
+				'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36'
+			}
 		}, (response) => {
 			response.pipe(res);
 		});
 		proxy.end();
 	})
+    app.get("/suggest", (req,res)=>{
+		res.setHeader("Access-Control-Allow-Origin","*"); //cors
+        res.setHeader("Content-Type","text/html; charset=utf8")
+        /*
+            http://www.jumei.com/i/ajax/get_deal_recommend_group?pid=3284720
+        */
+    //    console.log(res.req.query);
+       let urlReq=res.req.query;
+		let proxy = https.request({
+			hostname: "www.jumei.com",
+			path: `/i/ajax/get_deal_recommend_group?pid=${urlReq.pid}`,
+            method: 'get',
+            headers: {
+				'Content-Type': 'text/html',
+				// 'Content-Length' : 2149,
+				'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36'
+			}
+		}, (response) => {
+			response.pipe(res);
+		});
+		proxy.end();
+	})
+    
     app.listen(8000);
 })
 gulp.task("build", ["compileJS","compileHTML","compileCSS"])
