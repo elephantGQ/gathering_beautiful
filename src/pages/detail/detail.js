@@ -34,6 +34,11 @@ require(["../../static/conf/config.js"], function(){
 			},1000)
 			
 		})
+		let sumTemp=sessionStorage.getItem("productAccount");
+			if(sumTemp==null){
+				sumTemp = 0;
+				}
+			$(".cart_num").html(`${sumTemp}`);
 		console.log(`http://localhost:8000/detail${window.location.search}`);
 		
 		$.ajax({
@@ -63,7 +68,7 @@ require(["../../static/conf/config.js"], function(){
 							$(".proAdd:last").remove();
 							$(".ULPrice a").text(`￥${$(".currentPrice").text()}`)
 				}})
-				document.getElementById("myiframe").src = `http://10.9.69.117:8000/test${window.location.search}`
+				document.getElementById("myiframe").src = `http://localhost:8000/test${window.location.search}`
 			}
 		})
 	

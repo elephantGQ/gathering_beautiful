@@ -7,6 +7,10 @@
     float: left;
     background: url("../../../imgs/regist/imgs/header_corn_new_v2.png");
 }
+.show{
+    display: block !important;
+}
+
 #header{
     width: 100%;
     height: 85px;
@@ -42,9 +46,18 @@
         float: left;
     }
 }
+i{
+    display: inline-block;
+    // margin-top: -10px;
+    float: left;
+    height: 20px;
+    width: 20px;
+    background: url("../../../imgs/sign.png") no-repeat;
+    background-position-y: -104px;
+}
 #center{
-    height: 418px;
-    margin-bottom: 50px; 
+    // height: 418px;
+    margin:50px 0 50px;
     .loginWrap{
         margin: 50px 0;
         position: relative;
@@ -118,14 +131,22 @@
             
         margin-bottom: 26px;
             overflow: hidden;
-            #telPhone{
+            #telPhone1{
                 border: 0;
                 width: 100%;
                 height: 43px;
                 background: url("../../../imgs/regist/imgs/sign.png") no-repeat center left;
                 background-position: 0 0;
                 padding-left:43px; 
-            }   
+            }  
+            #pwd{
+                border: 0;
+                width: 100%;
+                height: 43px;
+                background: url("../../../imgs/regist/imgs/sign.png") no-repeat center left;
+                background-position: 0 0;
+                padding-left:43px; 
+            }
                }
         .telDiv{
             margin: 10px 0 30px;
@@ -174,12 +195,113 @@
         #submitButton{
             display: block;
             width: 100%;
-            background: #e5406f;
+            background: #F8296D;
             height: 40px;
             font-weight: 600px;
             text-align: center;
             font-size: 14px;
-            border: #e5406f;
+            border: #F8296D;
+            color:#fff;
+            margin-bottom: 10px;
+        }
+    }
+    #login-user-form{
+        display: none;
+        clear: both;
+        .focus_text{
+            display: none;
+            color: #999;
+            font-size: 12px;
+            position: absolute;
+            top: 108%;
+            left: 0;
+        }
+        .error,.error1{
+            display: none;
+            color: #999;
+            font-size: 12px;
+            position: absolute;
+            top: 108%;
+            left: 0;
+            .msg{
+                width:310px;
+            }
+        }
+        .telephone,.passWord{
+            position: relative;
+        }
+        .border_Style{
+            
+            border: 1px solid #ccc;
+            
+        margin-bottom: 26px;
+            overflow: hidden;
+            .inputStyle{
+                border: 0;
+                width: 100%;
+                height: 43px;
+                background: url("../../../imgs/regist/imgs/sign.png") no-repeat center left;
+                background-position: 0 0;
+                padding-left:43px; 
+            }   
+            .mima{
+                background-position: 0 -48px;
+            }
+               }
+        .telDiv{
+            margin: 10px 0 30px;
+            width: 100%;
+            height: 44px;
+            position: relative;
+            .codePwd{
+                border: 1px solid #ccc;
+                overflow: hidden;
+                float: left;
+                #code{
+                    border: 0;
+                    width: 93px;
+                    height: 43px;
+                    background: url("../../../imgs/regist/imgs/sign.png") no-repeat center left;
+                    background-position: 0 -48px;
+                    padding-left:43px; 
+                }
+            }
+                .telCode{
+                    display: block;
+                    width: 130px;
+                    height: 41px;
+                    border: 1px solid #d9d9d9;
+                    line-height: 41px;
+                    height: 41px;
+                    font-size: 12px;
+                    font-weight: 700;
+                    color: #666;
+                    background: #fcfcfc;
+                    float: right;
+                    padding: 0 8px;
+                    text-align: center;
+                }
+        }
+        
+        p{
+            width: 100%;
+            height: 18px;
+            clear: both;
+            line-height: 1.5;
+            margin: 10px 0;
+           label{
+               font-size: 12px;
+           }
+        }
+        #submitButton,#submitButton1 {
+            display: block;
+            width: 100%;
+            background: #F8296D;
+            height: 40px;
+            font-weight: 600px;
+            text-align: center;
+            font-size: 14px;
+            border: #F8296D;
             color:#fff;
             margin-bottom: 10px;
         }
@@ -232,6 +354,8 @@
 .footer{
     width:100%;
     margin-bottom: 80px;
+    margin-top:80px;
+    display: inline-block;
     // text-align: center;
     .footCon{
         width: 1090px;

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="../../styles/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../styles/pages/cart/cart.css" />
+    <link rel="stylesheet" href="../../static/styles/iconfont.css">
+    <style>
+
+    </style>
+   <script id="temp_product" type="text/html">
+    <table class="cart_item">
+            <thead>
+                <tr>
+                    <th class="cart_overview">
+                        <div class="cart_header"> <input type="checkbox"
+                                class="js_group_selector cart_group_selector" checked="checked">
+                            <h2> 聚美优品发货 </h2>
+                        </div>
+                    </th>
+                    <th class="cart_price">聚美价（元）</th>
+                    <th class="cart_num">数量</th>
+                    <th class="cart_total">小计（元）</th>
+                    <th class="cart_option">操作</th>
+                </tr>
+            </thead>
+            <tbody >
+    
+         
+          <%var sum=0;%>
+          <%var account=0;%>
+          <% _.forEach(data,function(ele){%>
+            
+            <tr class="cartPro" >
+                
+                        <td valign="top">
+                                <div class="pid"><%-ele.pid%></div>
+                            <div class="cart_item_desc clearfix"> 
+                                <input type="checkbox"  class="js_item_selector cart_item_selector"checked="'checked'/">
+                                <div class="cart_item_desc_wrapper"> 
+                                    <a class="cart_item_pic" href="http://localhost:9999/pages/detail/detail.html?item_id=<%-ele.pid%>"
+                                        target="_blank"> 
+                                        <%let imgUrl=ele.pimg.replace(/[0-9]+_[0-9]+/,"60_60").replace("_dx","")%>
+                                        <img src='<%- imgUrl%>'>
+                                         <span class="sold_out_pic png"></span> 
+                                    </a> 
+                                    <span class="cart_item_global">
+                                        [极速免税]
+                                    </span> 
+                                    <a class="cart_item_link" href="http://localhost:9999/pages/detail/detail.html?item_id=<%-ele.pid%>"   target="_blank">
+                                        <%-ele.pname%>
+                                    </a>
+                                    <div class="sale_info clearfix"> </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cart_item_price">
+                                <p class="jumei_price"><%-ele.price%></p>
+                                <p class="market_price "><%-ele.preprice%></p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cart_item_num ">
+                                <div class="item_quantity_editer clearfix">
+                                    <span class="decrease_one">-</span> 
+                                    <input class="item_quantity" type="text" value="<%-ele.count%>"> <span class="increase_one ">+</span> </div>
+                                <div class="item_shortage_tip"> </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cart_item_total">
+                                <p class="item_total_price"><%-ele.price%></p>
+                                <p>省 <span class="item_saved_price"><%-(ele.preprice-ele.price)%></span></p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cart_item_option"> 
+                                <a class="icon_small delete_item png" title="删除"></a> </div>
+                        </td>
+                    </tr>
+                    <%sum+= ele.price*ele.count%>
+                    <%sum=parseInt(sum*10)/10%>
+                    <%account+=ele.count;%> 
+                    <%$(".total_amount").html(account)%>
+                    <%$(".total_price").html(sum)%>
+
+                    <%})%>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan=" 5 "> 商品金额： <span class="group_total_price">¥<%-sum%></span> </td>
+                    </tr>
+                </tfoot>
+                <table>
+    </script>
+</head>
+
+<body>
+    <div class="header">
+        <div class="w960">
+            <div class="headerWrap">
+                <div class="logo">
+
+                </div>
+                <div class="zhuangT"></div>
+            </div>
+
+        </div>
+    </div>
+    <div class="top">
+        <div class="w960">
+            <div class="topLeft"> <i class="icon_small"></i> <span class="cart_timer_text">请尽快结算。 </span>
+            </div>
+            <div class="top_banner">
+                <ul class="header_icons">
+                    <li> <span> <i class="icon_zhenpin"></i> 真品防伪码 </span> </li>
+                    <li> <span> <i class="icon_tuihuo"></i> 30天无条件退货 </span> </li>
+                    <li> <span> <i class="icon_baoyou"></i> 美妆满2件或299元包邮 </span> </li>
+                </ul>
+            </div>
+            <div class="shippment"> <i class="icon_small">包邮</i> 第三方入驻商家单订单满159包邮,自营非食品类满两件或满299元包邮 </div>
+        </div>
+    </div>
+    <div class="center">
+        <div class="w960">
+            <div class="" id="myProduct">
+
+            </div>
+          
+                    <!--
+                    <tr class="cartPro" >
+                        <td valign="top">
+                            <div class="cart_item_desc clearfix"> 
+                                <input type="checkbox"  class="js_item_selector cart_item_selector"checked="'checked'/">
+                                <div class="cart_item_desc_wrapper"> 
+                                    <a class="cart_item_pic" href="http://item.jumeiglobal.com/ht190522p3426004t1.html?from=jmglobal"
+                                        target="_blank"> 
+                                        <img src="https://p1.jmstatic.com/product/003/426/3426004_std/3426004_60_60.jpg">
+                                         <span class="sold_out_pic png"></span> 
+                                    </a> 
+                                    <span class="cart_item_global">
+                                        [极速免税]
+                                    </span> 
+                                    <a class="cart_item_link" href="http://item.jumeiglobal.com/ht190522p3426004t1.html?from=jmglobal"   target="_blank">
+                                        碧柔清爽保湿防晒新版50g
+                                    </a>
+                                    <div class="sale_info clearfix"> </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cart_item_price">
+                                <p class="jumei_price">58.00</p>
+                                <p class="market_price ">299.00</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cart_item_num ">
+                                <div class="item_quantity_editer clearfix">
+                                    <span class="decrease_one disabled ">-</span> 
+                                    <input class="item_quantity" type="text" value="1"> <span class="increase_one ">+</span> </div>
+                                <div class="item_shortage_tip"> </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cart_item_total">
+                                <p class="item_total_price">58.00</p>
+                                <p>省 <span class="item_saved_price">220.00</span></p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="cart_item_option"> 
+                                <a class="icon_small delete_item png" title="删除"></a> </div>
+                        </td>
+                    </tr>
+                    
+                <tfoot>
+                    <tr>
+                        <td colspan=" 5 "> 商品金额： <span class="group_total_price">¥157.00</span> </td>
+                    </tr>
+                </tfoot>
+                  -->
+                  <div class="common_handler">
+                      <div class="right_handler"> 
+                          共 <span class="total_amount">0 </span> 
+                          &nbsp;件商品 &nbsp;&nbsp;
+                          商品应付总额：<span class="total_price">¥0.00</span> 
+                          <a id="go_to_order" class="btn" href="javascript:;">去结算</a> 
+                        </div> 
+                        <label for="js_all_selector" class="cart_all_selector_wrapper"> 
+                            <input type="checkbox" id="js_all_selector" class="js_all_selector all_selector"> 全选 
+                        </label> 
+                        <a class="go_back_shopping" href="../../pages/home/home.html">继续购物</a> 
+                        <span class="seperate_line">|</span> 
+                        <a class="clear_cart_all" href="">清空选中商品</a>
+                      <form id="form_to_order" action="" method="post" style="display: none;"> 
+                        <input type="hidden"  name="items_key"> 
+                    </form> 
+                    <span class="seperate_line">|</span> 
+                    <a class="clear_sold_out"  href="javascript:void(0)">删除已抢光商品</a>
+                  </div>
+                  </div>
+    </div>
+    
+    <div class="footer">
+        <div class="footbottom">
+            <div class="w960">
+                <div class="footCon">
+                    <p>
+                        COPYRIGHT © 2010-2019 北京创锐文化传媒有限公司 JUMEI.COM 保留一切权利。
+                        客服热线：400-123-8888
+
+                        <br>
+
+                        京公网安备 11010102001226 |<a href="#">京ICP证111033号</a>|<a href="#">食品流通许可证
+                            SP1101051110165515（1-1）</a>|<a href="#">营业执照
+                    </p>
+                    <div class="liList">
+                        <ul>
+                            <li style="background-position-y: -168px"><a href="#"></a></li>
+                            <li style="background-position-y: -219px"><a href="#"></a></li>
+                            <li style="background-position-y: -270px"><a href="#"></a></li>
+                            <li style="background-position-y: -320px"><a href="#"></a></li>
+                            <li style="background-position-y: -372px"><a href="#"></a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</body>
+<script src="../../static/scripts/require.js" data-main="cart.js" type="text/javascript" charset="utf-8"></script>
+
+</html>

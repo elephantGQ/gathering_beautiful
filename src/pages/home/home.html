@@ -12,7 +12,7 @@
 
 	
 	<% _.forEach(data.list,function(ele){%>
-		<%if(ele.deal_category!="media"){%>
+		<%if(ele.deal_category!="media"&&ele.deal_category!="new_combination_global"&&ele.deal_category!="retail_global"){%>
 			<li class="productBox">
 					<a  href="http://localhost:9999/pages/detail/detail.html?item_id=<%-ele.deal_hid%>" class="imgDetail">
 						<% if(ele.is_wh) {%>
@@ -24,8 +24,31 @@
 						<div class="logo"></div>
 						<%}%>
 					</a>
-					<!-- 
+					<% if(typeof ele.deal_group != "undefined"){ %>
+					<div class="proInfo">
+						{
+							"pid":"<%-ele.deal_hid%>",
+							"pname":"<%-ele.deal_tit%>",
+							"pimg":"<%-ele.deal_img%>",
+							"price":"<%-ele.deal_group.price_dis%>",
+							"preprice":"<%-ele.deal_group.price_org%>",
+							"count":1
+						}
+					</div>
+					<%}else{%>
+						<div class="proInfo">
+								{
+									"pid":"<%-ele.deal_hid%>",
+									"pname":"<%-ele.deal_tit%>",
+									"pimg":"<%-ele.deal_img%>",
+									"price":"<%-ele.deal_global.price_home%>",
+									"preprice":"<%-ele.deal_global.price_home%>",
+									"count":1
+								}
+							</div>
+							<%}%>
 					<div class="coverOn">
+							<a  href="http://localhost:9999/pages/detail/detail.html?item_id=<%-ele.deal_hid%>" class="clickCover">
 							<a class="cartBox">加入购物车</a>
 							<% if(ele.is_wh) {%>
 							<div class="bottomAreaHw">海外直采 海外价格 闪电发货</div>
@@ -33,7 +56,7 @@
 								<div class="bottomAreaGn">新品上线，赶快来试试吧</div>
 								<%}%>
 					</div>
-					 -->
+					
 						<div class="product_detail">
 								<p class="title"><span class="pink">【官方授权】</span><%-ele.deal_tit%></p>
 								<% if(typeof ele.deal_group != "undefined"){ %>
@@ -71,8 +94,11 @@
 			<div class="w1090">
 				<ul class="left">
 					<li>欢迎来到聚美！</li>
-					<li><a href="#">请登录</a></li>
-					<li><a href="#">快速注册</a></li>
+					<div class="isLogin">
+						<li><a href="../login/login.html">请登录</a></li>
+						<li><a href="../regist/regist.html">快速注册</a></li>
+					</div>
+					
 				</ul>
 				<ul class="right">
 
@@ -350,13 +376,42 @@
 	</div>
 	<!-- 侧边的购物篮子 -->
 	<div id="left_bar">
-<ul class="mainBar">
-	<li>111</li>
-	<li>222</li>
-	<li>333</li>
-	<li>444</li>
-	<li>555</li>
-</ul>
+		<div class="barMain">
+				<ul class="barCenter">
+						<li class="isMe">
+							<a href="#"><s></s></a>
+						</li>
+						<li id="liCart">
+							<a href="#" >
+								<s></s>
+								<span class="text">购物车</span>
+								<span class="cart_num">0</span>
+							</a>
+						</li>
+						<li class="myMoney">
+								<a href="#" >
+									<s></s>
+									<!-- 我的财产 -->
+								</a>
+						</li>
+						<li class="myHope">
+								<a href="#" >
+									<s></s>
+									<!-- 我的心愿单 -->
+								</a>
+						</li>
+						
+					</ul>
+				<ul class="barBottom">
+						<li class="code">
+								<a href="#"><s></s></a>
+							</li>
+							<li class="server">
+									<a href="#"><s></s></a>
+								</li>
+				</ul>
+		</div>
+
 	</div>
 	<div class="" id="footer">
 		<div class="w1090">
@@ -476,8 +531,7 @@
 		<div class="footbg"></div>
 		<div class="footcenter">
 			<div class="w1090">
-				<ul>
-					
+				<ul class="liList">
 					<li ><a href="#">关于聚美优品</a></li>
 					<li><a href="#">INVESTOR RELATIONS</a></li>
 					<li><a href="#">合作招商</a></li>
@@ -501,7 +555,7 @@
 				
 									京公网安备 11010102001226 |<a href="#">京ICP证111033号</a>|<a href="#">食品经营许可证</a>|<a href="#">营业执照</a>|<a href="#">ICP许可证</a>|<a href="#">出版物经营许可证</a>|<a href="#">第二类医疗器械经营备案凭证</a>|<a href="#">网络食品交易第三方平台提供者备案信息表</a>|<a href="#">增值电信业务经营许可证</a>
 							</p>
-							<div>
+							<div class="liList">
 								<ul>
 									<li style="background-position-y: -168px"><a href="#"></a></li>
 									<li style="background-position-y: -219px"><a href="#"></a></li>

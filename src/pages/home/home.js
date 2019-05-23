@@ -1,6 +1,14 @@
 require(["../../static/conf/config.js"], function(){
 	require(["jquery","sw","lodash"], function($,Swiper,_){
 		$(function(){
+			let loginUser=JSON.parse(localStorage.getItem("loginUser"));
+			if(loginUser){
+				$(".isLogin").html(`<li>${loginUser.tel}</li><li><a href="#" class="loginOut">退出</a></li>`);
+			}
+			$(".loginOut").click(function(){
+				$(".isLogin").html(`<li><a href="../login/login.html">请登录</a></li><li><a href="../regist/regist.html">快速注册</a></li>`)
+				localStorage.removeItem("loginUser")
+			})
 			$(".jumei").mouseover(function () { 
 				$(this).children(".sub_nav").show();
 				$(this).children('a').children("em").removeClass("icon-icon-arrowdown-expa").addClass("icon-icon-arrowup");
@@ -67,7 +75,55 @@ require(["../../static/conf/config.js"], function(){
 				$(".todayOpt").hide()
 				$(".btTommon").addClass("current").siblings().removeClass("current");
 			})
-			
+			let sumTemp=localStorage.getItem("productAccount");
+			if(sumTemp==null){
+				sumTemp = 0;
+				}
+			$(".cart_num").html(`${sumTemp}`);
+			//抛物线运动
+			function parabola(ele, stop){
+				// console.log("抛物线启动")
+				// console.log(ele.offset())
+				// console.log(stop.offset())
+				//y == a*x^2 + bx + c 
+				//原点
+				var start={
+					x:ele.offset().left,
+					y:ele.offset().top
+				}
+				// console.log(start);
+				//目标点的 相对坐标系位置
+				var end={
+					x:stop.offset().left-start.x,
+					y:start.y-stop.offset().top,
+				}
+				// console.log(end);
+				//系数
+				var a = -0.0015;
+				// b = (y - ax^2)/x
+				var b=(end.y-a*end.x*end.x)/end.x;
+				var _x=0;
+				var t=setInterval(function(){
+					_x+=8;
+					ele.css({
+						left:_x+start.x
+					})
+					var _y = a*_x*_x + b*_x;
+					ele.css({
+						top:start.y-_y
+					})
+					if(_x>=end.x){
+						ele.css({
+							left:stop.offset().left,
+							top:stop.offset().top
+						})
+						clearInterval(t);
+						ele.remove();
+						$(".cart_num").html(parseInt($(".cart_num").html())+1);
+					}
+				}, 20);
+			}
+		
 			//节流
 			function throttle(fn,delay){
 				let last =0;
@@ -97,6 +153,46 @@ require(["../../static/conf/config.js"], function(){
 							})
 							$(".productBox").mouseleave(function(){
 								$(this).children(".coverOn").hide();
+							})
+							$(".cartBox").click(function(){
+								// console.log($(this).offset()) 
+								let  proBall=$(`<div id="ball"></div>`);
+								proBall.css({
+									left:$(this).offset().left+40,
+									top:$(this).offset().top-20,
+								})
+								$(document.body).append(proBall);
+								// console.log($("#liCart").offset()) 
+								//开始抛物线运动
+								parabola(proBall,$("#liCart"))
+								//获取这个商品的隐藏信息
+								let tempProduct=JSON.parse($(this).parent().siblings(".proInfo").html());
+								//获取本地的购物车信息
+								let productList=JSON.parse(localStorage.getItem("cart"));
+								//获取本地的商品的个数
+								let sum=localStorage.getItem("productAccount");
+								if(sum==null){
+									sum = 0;
+								}
+								sum++;
+								let temp=[];
+								let isExist=false;
+								if(productList){
+									productList.forEach(ele=> {
+										if(ele.pid!=tempProduct.pid){
+											temp.push(ele);
+										}else{
+											isExist=true;
+											ele.count++;
+											temp.push(ele);
+										}
+									});
+								}
+								if(!isExist){
+									temp.push(tempProduct);
+								}
+								localStorage.setItem("cart",JSON.stringify(temp));
+								localStorage.setItem("productAccount",sum);
 							})
 						}
 					})

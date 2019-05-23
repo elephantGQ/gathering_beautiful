@@ -69,7 +69,7 @@ gulp.task("server",()=>{
 		res.setHeader("Content-Type","text/plain; charset=utf8")
 		let proxy = http.request({
 			hostname: "sh.jumei.com",
-            path: "/Ajax/GetHomeTodayLists/100/1",
+            path: "/Ajax/GetHomeTodayLists/200/1",
 			method: 'get'
 		}, (response) => {
 			response.pipe(res);
@@ -174,6 +174,7 @@ http://s.h5.jumei.com/mobile/deal/product_union?type=jumei_deal&item_id=d190426p
 		});
 		proxy.end();
 	})
+  
     
     app.listen(8000);
 })

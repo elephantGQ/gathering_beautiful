@@ -34,7 +34,7 @@
 					</div>
 					<div class="loginOpt">
 						<div>
-								<input name="method" type="radio" rel="login-dynamic-form"  value="" id="loginRadio1">
+								<input name="method" type="radio" rel="login-dynamic-form"  value="" id="loginRadio1" checked>
 								<label for="loginRadio1"> 手机动态密码登录</label>
 						</div>
 						<div>
@@ -43,9 +43,9 @@
 						</div>
 					
 					</div>
-					<from id="login-dynamic-form">
+					<from id="login-dynamic-form" >
 						<div class="user">
-								<input type="text"  id="telPhone" placeholder="已注册的手机号码">
+								<input type="text"  id="telPhone1" placeholder="已注册的手机号码">
 						</div>
 						<div class="telDiv">
 								<div class="codePwd">
@@ -59,7 +59,29 @@
 							</label></p>
 						<input type="submit" name="" value="登陆" id="submitButton"></input></from>
 					</from>
-					<from id="login-user-form"></from>
+					<from id="login-user-form">
+						 <div class="telephone">
+							<div class="border_Style">
+									<input type="text" class="inputStyle" id="telPhone" placeholder="手机号">
+							</div>
+							<div class="focus_text">请输入11位手机号码</div>
+							<div class="error"><i></i><div class="msg">您输入的手机号码格式有误，需为 11 位数字格式</div></div>
+							<div class="error1"><i></i><div class="msg">此手机号尚未注册，请注册后登陆</div></div>
+					</div>
+					<div class="passWord">
+						<div class="border_Style">
+								<input type="password" class="inputStyle mima" id="pwd" placeholder="密码">
+						</div>
+						<div class="focus_text">6-16个字符，建议使用字母加数字或符号组合</div>
+						<div class="error"><i></i><div class="msg">密码输入错误，请重新输入密码</div></div>
+				</div>
+					
+					<p><label for="dynamic_auto_login">
+						<input type="checkbox" id="dynamic_auto_login" checked="">
+						&nbsp;自动登录
+					</label></p>
+				<input type="submit" name="" value="登陆" id="submitButton1"></input></from>
+					</from>
 					<div class="iconAccount">
 							<div>你也可以使用以下帐号登录</div>
 							<p>
@@ -68,7 +90,7 @@
 								<a href="#" class="a3"></a>
 								<a href="#" class="a4"></a>
 								<a href="#" class="a5"></a>
-								<span>更多<i></i></span>
+								<span>更多<em></em></span>
 							</p>
 					</div>
 					</div>
@@ -99,7 +121,5 @@
 		</div>
 	</body>
 	
-	<script>
-		
-	</script>
+	<script src="../../static/scripts/require.js" data-main="login.js" type="text/javascript" charset="utf-8"></script>
 </html>
