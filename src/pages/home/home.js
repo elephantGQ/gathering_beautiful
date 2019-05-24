@@ -123,7 +123,23 @@ require(["../../static/conf/config.js"], function(){
 					}
 				}, 20);
 			}
-		
+			// console.log($("#mustSeeDiv").text());
+			$.ajax({
+				type:"GET",
+				url:"http://localhost:8000/global",
+				dataType:"json",
+				success:function(data){
+					console.log(data.data.card.material);
+					console.log($("#mustSeeDiv").text());
+					var compiled=_.template($("#mustSeeDiv").text());
+					console.log(compiled)
+					data=data.data.card.material
+					var str=compiled({"data":data});
+					$(".mustCheckOut").html(str);
+				}
+			})
+
+			
 			//节流
 			function throttle(fn,delay){
 				let last =0;

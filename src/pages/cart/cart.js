@@ -74,15 +74,10 @@ require(["../../static/conf/config.js"], function(){
                 let count=$(this).parent().parent().siblings().eq(2).find(".item_quantity").val();
                 let allprice=Number($(".total_price").html());
                 $(this).parent().parent().parent().remove();
-                console.log(price);
-                console.log(count);
-                console.log(allprice);
                 $(".total_price").html(allprice-price*count)
                 $(".group_total_price").html("￥"+$(".total_price").html());
                 localStorage.setItem("productAccount",localStorage.getItem("productAccount")-count)
             })
-            console.log($(".item_quantity"))
-            console.log($(".increase_one"))
-            console.log($(".delete_item"))
+            
 	});
 })

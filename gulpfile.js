@@ -174,6 +174,19 @@ http://s.h5.jumei.com/mobile/deal/product_union?type=jumei_deal&item_id=d190426p
 		});
 		proxy.end();
 	})
+    app.get("/global", (req,res)=>{
+        res.setHeader("Access-Control-Allow-Origin","*"); //cors
+        res.setHeader("Content-Type","text/plain; charset=utf8")
+        // https://api.jumei.com/Deal/DealLimitBuy?card_id=9562&client_v=8.000&platform=iphone
+		let proxy = http.request({
+			hostname: "api.jumei.com",
+            path: "/Deal/DealLimitBuy?card_id=9562&client_v=8.000&platform=iphone",
+			method: 'get'
+		}, (response) => {
+			response.pipe(res);
+		});
+		proxy.end();
+	})
   
     
     app.listen(8000);

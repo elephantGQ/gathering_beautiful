@@ -10,7 +10,6 @@
 </head>
 <script id="temp_product" type="text/html">
 
-	
 	<% _.forEach(data.list,function(ele){%>
 		<%if(ele.deal_category!="media"&&ele.deal_category!="new_combination_global"&&ele.deal_category!="retail_global"){%>
 			<li class="productBox">
@@ -69,7 +68,52 @@
 				<%}})%>
 	
 </script>
+<script id="mustSeeDiv" type="text/html">
+	 <%console.log(data)%>
+	 <% _.forEach(data,function(ele){%>
+	<div class="today_tab_content">
+			<a href="#" target="_blank" class="today_tab_link">
+				<% let imgUrl= ele.image_url_set.single.url["480"] %>
+				<% imgUrl= imgUrl.substring(0,58)+"_dx_1500_400.jpg" %>
+				<img border="0" class="all_cart_img" src=<%-imgUrl%> style="">
+				<span class="today_rank_top_1"></span>
+			</a>
+			<a href="#" target="_blank" class="global_tip" style="display: none;">
+				<span>海外直采</span><span>海外价格</span><span>闪电发货</span>
+			</a>
+			<div class="deals_tags">
+				<span class="tags_list tags_haitao">海淘</span>
+			</div>
+			<div class="products_detail">
+				<div class="products_have_time">
+					<span class="today_end_time">
+						<span class="icon">距特卖结束 </span>
+						<span class="today_time" end_time="55842">00<em>:</em>14<em>:</em>28<em>:</em>14</span>
 
+					</span>
+				</div>
+				<a href="#" target="_blank" class="product_short_title">
+					<em></em><%-ele.name%>
+				</a>
+				<div class="product_price">
+					<div class="goto_cart_wrap all_cart_wrap"><a class="goto_btn goto_cart all_cart" href="javascript:;">加入购物车</a></div>
+
+					<span class="now_price"><em>¥</em><%-ele.jumei_price%></span>
+					<div class="price_wrap">
+						<div class="icon_wrap">
+						</div>
+						<span class="pass_price"><del><%-ele.market_price%></del></span>
+					</div>
+
+				</div>
+				<div class="global_sure_tag">
+					<span class="g_tag"><img src="http://p0.jmstatic.com/banner/area/000/000/029_big.jpg"></span>
+					<span class="wish_like yahei fr"><em><%-ele.brand_id%></em>人已经购买</span>
+				</div>
+			</div>
+		</div>
+		<%})%>
+</script>
 <body>
 	<div class="top">
 		<div class="w1090">
@@ -327,15 +371,59 @@
 		</div>
 		
 	</div>
-	<div id="everySee">
+	<div id="everySee"></div>
 		<div class="w1090">
-			<div class="mustSee">
-<div class="mustCheckOut"></div>
-<div class="djs">
-	<img src="../../imgs/mustSee.png" alt="" srcset="">
-</div>
-			</div>
+			
+		<div class="mustCheckOut">
+			<!--  
+			<div class="today_tab_content">
+				<a href="http://item.jumeiglobal.com/ht190523p2133237t1.html?from=index_hotdeals1_ht_pos001_onsale"
+					target="_blank" class="today_tab_link">
+					<img border="0" class="all_cart_img"
+						src="http://p2.jmstatic.com/product/002/133/2133237_std/2133237_dx_1500_400.jpg" style="">
+					<span class="today_rank_top_1"></span>
+				</a>
+				<a href="http://item.jumeiglobal.com/ht190523p2133237t1.html?from=index_hotdeals1_ht_pos001_onsale"
+					target="_blank" class="global_tip" style="display: none;">
+					<span>海外直采</span><span>海外价格</span><span>闪电发货</span>
+				</a>
+				<div class="deals_tags">
+					<span class="tags_list tags_haitao">海淘</span>
+				</div>
+				<div class="products_detail">
+					<div class="products_have_time">
+						<span class="today_end_time">
+							<span class="icon">距特卖结束 </span><span class="today_time"
+								end_time="55842">00<em>:</em>14<em>:</em>28<em>:</em>14</span>
+
+						</span>
+					</div>
+					<a href="http://item.jumeiglobal.com/ht190523p2133237t1.html?from=index_hotdeals1_ht_pos001_onsale"
+						target="_blank" class="product_short_title">
+						<em></em>泰国人气护肤品牌——BeautyBuffet浓密牛奶洗面奶100ml，洗出嫩滑“牛奶肌”！洁面也能如此“温柔”，氨基酸配方温和无刺激；牛奶蛋白&amp;辅酶Q10双重滋养，肌肤洁净不紧绷！甜甜牛奶味~~不要贪杯，留给肌肤“喝”哟！弹、润、嫩、滑，肌肤尽享牛奶浴！
+					</a>
+					<div class="product_price">
+						<div class="goto_cart_wrap all_cart_wrap"><a class="goto_btn goto_cart all_cart"
+								href="javascript:;">加入购物车</a></div>
+
+						<span class="now_price"><em>¥</em>24.9</span>
+						<div class="price_wrap">
+							<div class="icon_wrap">
+							</div>
+							<span class="pass_price"><del>¥39.9</del></span>
+						</div>
+
+					</div>
+					<div class="global_sure_tag">
+						<span class="g_tag"><img src="http://p0.jmstatic.com/banner/area/000/000/029_big.jpg"></span>
+						<span class="wish_like yahei fr"><em>370</em>人已经购买</span>
+					</div>
+				</div>
+			</div> -->
 		</div>
+
+			
+		
 	</div>
 	<div id="todayNew">
 		<div class="w1090">
