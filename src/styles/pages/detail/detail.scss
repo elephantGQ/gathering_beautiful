@@ -6,6 +6,19 @@ body{
 	width: 1090px;
 	margin: 0 auto;
 }
+.proInfo{
+	width:0;
+	height: 0;
+	opacity: 0;
+}
+#ball{
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	background: #E50150;
+	border-radius: 50%;
+	z-index:100000;
+}
 .top{
 	background: #E50150;
 	width: 100%;
@@ -45,6 +58,9 @@ body{
 		font-size: 12px;
 		float: left;
 		height: 28px;
+		.isLogin{
+			float: left;
+		}
 		li{
 			float: left;
 			line-height: 28px;
@@ -111,7 +127,7 @@ body{
 			.sub_nav{
 				position: absolute;
 				// top: 66px;
-				left: 916px;
+				left: 1100px;
 				background: #fff;
 				zoom: 1;
 				z-index: 1;
@@ -129,7 +145,7 @@ body{
 				}
 			}
 			.nav-right{
-				left: 1110px;
+				left: 1288px;
 			}
 		}
 	}
@@ -137,59 +153,190 @@ body{
 .header_center{
 	background: #fff;
     
-.header_center_wrap{
-	background: #fff url("../../../imgs/logo_new_v1.jpg") no-repeat center left;
-	height: 110px;
-	.hd520{
-		float: left;
-		a{
+	.header_center_wrap{
+		background: #fff url("../../../imgs/logo_new_v1.jpg") no-repeat center left;
+		height: 110px;
+		.hd520{
 			float: left;
-			margin-top: 18px;
-			height: 68px;
-			display: block;
-			width: 118px;
-			margin-left: 165px;
+			a{
+				float: left;
+				margin-top: 18px;
+				height: 68px;
+				display: block;
+				width: 118px;
+				margin-left: 165px;
+			}
 		}
-	}
-	.shopCar{
-		float: right;
-		margin-top: 33px;
-		border: 1px solid #e5e5e5;
-		background: #FFFFFF;
-		a{
-			display: block;
-			width: 140px;
-			height: 32px;
+		.shopCar{
+			float: right;
+			margin-top: 33px;
+			border: 1px solid #e5e5e5;
 			background: #FFFFFF;
-		.carImg{
-			height: 32px;
-			background: #FFFFFF;
-			width:43px;
-			float: left;
-			img{
-				height: 28px;
-				width: 28px;
-				padding: 0 9px ;
+			position: relative;
+			a{
+				display: block;
+				width: 140px;
+				height: 32px;
+				background: #FFFFFF;
+			.carImg{
+				height: 32px;
+				background: #FFFFFF;
+				width:43px;
+				float: left;
+				img{
+					height: 28px;
+					width: 28px;
+					padding: 0 9px ;
+					
+				}
 				
 			}
-			
+			span{
+				float: left;
+				padding-left: 6px;
+				color:#666;
+				font-size:12px;
+				height: 32px;
+				width:90px;
+				line-height: 32px;
+				background: #F8F8F8 ;
+			}
+			}
 		}
-		span{
-			float: left;
-			padding-left: 6px;
-			color:#666;
-			font-size:12px;
-			height: 32px;
-			width:90px;
-			line-height: 32px;
-			background: #F8F8F8 ;
+		.icon-icon-arrowdown-expa,.icon-icon-arrowup{
+			font-size: 6px;
 		}
+		.shopCartBox{
+			display: none;
+			position: absolute;
+			background: #fff;
+			width: 300px;
+			z-index: 50;
+			border: 1px solid #e5e5e5;
+			left:-160px;
+			.Boxheader{
+				height: 42px;
+				width: 100%;
+				font-size: 12px;
+				color:#000;
+				line-height: 42px;
+				border-bottom: 1px solid #eeeeee;
+				span{
+					color:#ed145b;
+					line-height: 42px;
+					height: 42px;
+					margin:0 14px 0 5px;
+					background: url(../.././../imgs/clock.jpg) no-repeat center left;
+					padding-left: 20px;
+				}
+			}
+			#cart_content{
+				width: 300px;
+				height: 256px;
+				overflow: auto;
+				
+				.cartSingle{
+					height: 85px;
+					width: 100%;
+					border-bottom: 1px dashed #d3d3d3;
+					.single_pic{
+						margin:10px 13px 0 11px;
+						width: 62px;
+						height: 62px;
+						float: left;
+						overflow: hidden;
+						a{
+							height: 60px;
+							width: 60px;
+							border: 1px solid #ccc;
+							img{
+								
+								display: block;
+								width: 60px;
+								height: 60px;
+								
+							}
+						}
+						
+					}
+					
+				}
+				.single_info{
+					height: 85px;
+					font-size: 12px;
+					float: left;
+					a{
+						height: 36px;
+						line-height: 36px;
+						font-size: 12px;
+						vertical-align: middle;
+					}
+					span{
+						display: inline-block;
+						height: 36px;
+						line-height: 36px;
+						font-size: 12px;
+						color:#ed145b;
+						
+					}
+					.price_num,.price_plus{
+						color: #474747 ;
+					}
+				}
+			}
+			.cartBottom{
+				height: 68px;;
+				width: 100%;
+				background: #f9f9f9;
+				.cartLeft{
+					height: 68px;
+					width: 100px;
+					margin-left: 16px;
+					float: left;
+					.price_whole{
+						display: block;
+						height: 36px;
+						line-height: 36px;
+						font-size: 12px;
+						color:black;
+						.num_all{
+							color: #ed145b;
+							font-weight: bold;
+							font-size: 14px;
+						}
+					}
+					.price_gongji{
+						font-size: 12px;
+						color:black;
+						em{
+							color: #ed145b;
+							font-weight: bold;
+						}
+						.total_price{
+							color: #ed145b;
+							font-weight: bolder;
+							font-size: 15px;
+						}
+					}
+				}
+				.cartRight{
+					float: right;
+					.gwc{
+						height: 26px;
+						width: 98px;
+						display: block;
+						background: #f92a6e;
+						line-height: 26px;
+						text-align: center;
+						margin: 22px 11px 0 0 ;
+						font-size: 12px;
+						color:#fff;
+						border: solid 1px #e00a50;
+					}
+				}
+			}
 		}
 	}
-	.icon-icon-arrowdown-expa,.icon-icon-arrowup{
-		font-size: 6px;
-	}
-}
 .from {
 	float: left;
 	margin-left: 64px;
@@ -574,14 +721,18 @@ body{
 	}
    
 }
-#myiframe{
-    height:18000px;
-    display:inline;
-    overflow:hidden;
+#detailInfo{
+	width: 820px;
     margin:0;
     padding:0;
 	border:0;
 	float: left;
+	img{
+		width: 820px;
+		display:block;
+		margin: 0;
+		border: 0;
+	}
 }
 .topMenu{
     
@@ -727,14 +878,19 @@ body{
                         font-size: 13px;
                     }
                     .priceDown{
-                        width: 72px;
+                        width: 90px;
                         display: inline-block;
                         margin: 0 0 2px 10px;
                         margin-top: 10px;
                         height: 48px;
                         color: #8e8e8e;
-                        background: url("../../../imgs/dot_bw.png") no-repeat center center;
-                        font-size: 13px;
+						font-size: 13px;
+						b{
+							display: inline-block;
+							width: 9px;
+							height: 11px;
+							background: url("../../../imgs/dot_bw.png") no-repeat center center;
+						}
                     }
                 }
                 
@@ -948,11 +1104,11 @@ body{
 			
 		}
 		
-	.liCart{
+	#liCart{
 		height: 133px;
 		color: #fff;
 		width:40px;
-		
+		position: relative;
 		a{
 			display: block;
 			text-align: center;

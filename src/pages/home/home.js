@@ -1,13 +1,29 @@
 require(["../../static/conf/config.js"], function(){
 	require(["jquery","sw","lodash"], function($,Swiper,_){
 		$(function(){
-			let loginUser=JSON.parse(localStorage.getItem("loginUser"));
+			let loginUser=JSON.parse(sessionStorage.getItem("loginUser"));
 			if(loginUser){
 				$(".isLogin").html(`<li>${loginUser.tel}</li><li><a href="#" class="loginOut">退出</a></li>`);
 			}
+			//获取购物车
+			let productList=JSON.parse(localStorage.getItem("cart"));
+			console.log(productList);
+			var compiled=_.template($("#cartSmall").text())
+			var str=compiled({"data":productList});
+			console.log(str);
+			$("#cart_content").html(str);
+
+			//小购物车展开
+			$(".shopCar").mouseenter(function(){
+				$(".shopCartBox").show();
+				console.log("进来了");
+			})
+			$(".shopCar").mouseleave(function(){
+				$(".shopCartBox").hide();
+			})
 			$(".loginOut").click(function(){
 				$(".isLogin").html(`<li><a href="../login/login.html">请登录</a></li><li><a href="../regist/regist.html">快速注册</a></li>`)
-				localStorage.removeItem("loginUser")
+				sessionStorage.removeItem("loginUser")
 			})
 			$(".jumei").mouseover(function () { 
 				$(this).children(".sub_nav").show();
@@ -65,6 +81,14 @@ require(["../../static/conf/config.js"], function(){
 					
 				},1000)
 				
+			})
+			$(".today_tab_content").mouseenter(function(){
+				console.log($(this));
+				$(this).find(".global_tip").show();
+			})
+			$(".today_tab_content").mouseleave(function(){
+				console.log($(this));
+				$(this).find(".global_tip").hide();
 			})
 			$(".btToday").click(()=>{
 				$(".todayOpt").show();
@@ -129,10 +153,11 @@ require(["../../static/conf/config.js"], function(){
 				url:"http://localhost:8000/global",
 				dataType:"json",
 				success:function(data){
-					console.log(data.data.card.material);
-					console.log($("#mustSeeDiv").text());
+					// console.log(data.data.card.material);
+					console.log("今日必看请求开始了");
+					
 					var compiled=_.template($("#mustSeeDiv").text());
-					console.log(compiled)
+					// console.log(compiled)
 					data=data.data.card.material
 					var str=compiled({"data":data});
 					$(".mustCheckOut").html(str);

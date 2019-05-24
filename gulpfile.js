@@ -96,10 +96,10 @@ gulp.task("server",()=>{
 		res.setHeader("Access-Control-Allow-Origin","*"); //cors
         res.setHeader("Content-Type","text/plain; charset=utf8")
         // console.log(req);
-        let urlReq=res.req._parsedUrl.search;
+        let urlReq=res.req.query["item_id"];
     	let proxy = https.request({
             hostname: "api.jumei.com",
-			path: `/Product/DetailDynamic${urlReq}&client_v=8.000&global_init_log_push_enable=off&platform=iphone1&type=jumei_deal`,
+			path: `/Product/DetailDynamic?item_id=${urlReq}&client_v=8.000&global_init_log_push_enable=off&platform=iphone1&type=jumei_deal`,
             method: 'get',
             headers: {
 				'Content-Type': 'text/html',
@@ -115,10 +115,10 @@ gulp.task("server",()=>{
 		res.setHeader("Access-Control-Allow-Origin","*"); //cors
         res.setHeader("Content-Type","text/plain; charset=utf8")
         // https://s.mobile.jumei.com/api/v1/product/detailStatic?&client_v=8.000&global_init_log_push_enable=off&platform=iphone&type=jumei_deal&item_id=d190426p3284720
-        let urlReq=res.req._parsedUrl.search;
+        let urlReq=res.req.query["item_id"];
     	let proxy = https.request({
             hostname: "s.mobile.jumei.com",
-			path: `/api/v1/product/detailStatic${urlReq}&client_v=8.000&global_init_log_push_enable=off&platform=iphone&type=jumei_deal`,
+			path: `/api/v1/product/detailStatic?item_id=${urlReq}&client_v=8.000&global_init_log_push_enable=off&platform=iphone&type=jumei_deal`,
             method: 'get',
             headers: {
 				'Content-Type': 'text/html',
@@ -148,7 +148,8 @@ http://s.h5.jumei.com/mobile/deal/product_union?type=jumei_deal&item_id=d190426p
 				'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36'
 			}
 		}, (response) => {
-			response.pipe(res);
+            response.pipe(res); 
+          
 		});
 		proxy.end();
 	})
@@ -188,7 +189,6 @@ http://s.h5.jumei.com/mobile/deal/product_union?type=jumei_deal&item_id=d190426p
 		proxy.end();
 	})
   
-    
     app.listen(8000);
 })
 gulp.task("build", ["compileJS","compileHTML","compileCSS"])

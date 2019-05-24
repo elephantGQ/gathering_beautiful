@@ -9,16 +9,50 @@
 	<link rel="stylesheet" href="../../static/styles/iconfont.css">
 </head>
 <!-- 第二十九行//这块有的图片没有这么大尺寸就舍弃了<% let imgUrl=ele.image_url_set.url["320"].replace("_500_500.jpg","_dx_1000_400.jpg")%> -->
+<script>
+function changeSize(){
+		// console.log("加载完成");
+		/*
+		console.log(window.document.domain , window.frames['myiframe'].contentWindow.document.domain)
+		console.log(window.frames['myiframe'].contentWindow.document.documentElement.offsetHeight)
+*/
+}
+</script>
+<script id="cartSmall" type="text/html">
+	<%let sum=0%>
+	<%let count=0%>
+	<% _.forEach(data,function(ele,i){%>
+	<div class="cartSingle">
+			<div class="single_pic"><a href="http://localhost:9999/pages/detail/detail.html?item_id=<%-ele.pid%>">
+					
+				<%let imgUrl=ele.pimg.replace(/[0-9]+_[0-9]+/,"60_60").replace("_dx","")%>
+				<img src="<%-imgUrl%>"></a>
+				</div>
+			<div class="single_info">
+				<a href="http://localhost:9999/pages/detail/detail.html?item_id=<%-ele.pid%>">
+					<% let name=ele.pname.substring(0,10)+"..."%>
+					<%-name%>
+				</a>
+				<%count+=ele.count%>
+				<%sum+=ele.count*ele.price%>
+				<span class="price">￥<%-ele.price%></span><span class="price_plus"> x </span><span class="price_num"><%-ele.count%></span></div>
+		</div>
+		<%})%>
+		<%$(".num_all").html(count)%>
+		<%$(".total_price").html(sum)%>
+	</script>
 <script id="temp_product" type="text/html">
 	<div class="w1090">
 			<span id="pidHiddle" no=<%-data.product_id%>></span>
 		<a href="#">聚美优品首页</a> &gt
 		<% _.forEach(data.share_info,function(ele){%>
+		<% title=ele.title%>
 		<a href="#"><%-ele.title%></a>
 		<%})%>
 	</div>
 	<div class="" id="productTemp">
 		<div class="w1090">
+			
 			<div class="proLeft">
 				<div class="proLeftTop">
 					<% _.forEach(data.share_info,function(ele){%>
@@ -28,7 +62,7 @@
 				</div>
 				<div class="proLeftCenter">
 					<% _.forEach(data.share_info,function(ele){%>
-					<% let imgUrl=ele.image_url_set.url["320"]%>
+					<% imgUrl=ele.image_url_set.url["320"]%>
 					<img src="<%-imgUrl%>" alt="">
 					<%})%>
 				</div>
@@ -56,8 +90,18 @@
 						<span class="gj">¥</span><span class="currentPrice"><%-ele.jumei_price%></span>
 						<div class="priceDetail"><span
 								class="priceRef">参考价¥<%-ele.market_price%></span> <span
-								class="priceDown">直降&nbsp&nbsp&nbsp&nbsp¥<%-(ele.market_price-ele.jumei_price)%></span>
+								class="priceDown">直降<b></b>¥<%-(ele.market_price-ele.jumei_price)%></span>
 						</div>
+						<div class="proInfo">
+								{
+									"pid":"<%-data.item_id%>",
+									"pname":"<%-title%>",
+									"pimg":"<%-imgUrl%>",
+									"price":"<%-ele.jumei_price%>",
+									"preprice":"<%-ele.market_price%>",
+									"count":1
+								}
+							</div>
 						<%})%>
 					</div>
 				</div>
@@ -138,9 +182,11 @@
 		<div class="header_top">
 			<div class="w1090">
 				<ul class="left">
-					<li>欢迎来到聚美！</li>
-					<li><a href="#">请登录</a></li>
-					<li><a href="#">快速注册</a></li>
+						<li>欢迎来到聚美！</li>
+						<div class="isLogin">
+							<li><a href="../login/login.html">请登录</a></li>
+							<li><a href="../regist/regist.html">快速注册</a></li>
+						</div>
 				</ul>
 				<ul class="right">
 
@@ -214,12 +260,36 @@
 					</div>
 
 					<div class="shopCar">
-						<a href="#">
-							<div class="carImg"><img src="../../imgs/cart.gif"></div>
-							<span>去购物车结算<em
-									class="iconfont icon-icon-arrowdown-expa"></em></span>
-						</a>
-					</div>
+							<a href="http://localhost:9999/pages/cart/cart.html"><div class="carImg"><img src="../../imgs/cart.gif" ></div><span>去购物车结算<em class="iconfont icon-icon-arrowdown-expa"></em></span></a>
+							<div class="shopCartBox">
+								<div class="Boxheader">
+									<span>20分钟</span>后购物车将被清空请及时结算
+								</div>
+								<div id="cart_content">
+									<!-- 
+										<div class="cartSingle">
+											
+												<div class="single_pic"><a href="http://sh.jumei.com/i/deal/d190524p68578.html?from=home_cart_float" target="_blank" alt="花印水漾洁净洗面乳150g">
+														<img src="https://p1.jmstatic.com/product/000/068/68578_std/68578_60_60.jpg"></a>
+													</div>
+												<div class="single_info">
+													<a href="http://sh.jumei.com/i/deal/d190524p68578.html?from=home_cart_float" target="_blank" alt="花印水漾洁净洗面乳150g" class="name">
+														花印水漾洁净洗面乳150g
+													</a>
+														
+													<span class="price">￥39.00</span><span class="price_plus"> x </span><span class="price_num">1</span></div>
+											</div>
+										 -->
+								</div>
+								<div class="cartBottom">
+									<div class="cartLeft">
+											<div class="price_whole"><span>共<span class="num_all">5</span>件商品</span></div>
+											<span class="price_gongji">共计<em>￥</em><span class="total_price">535</span></span>
+									</div>
+									<div class="cartRight"> <a href="#" class="gwc">去购物车结算</a></div>
+								</div>
+							</div>
+						</div>
 				</div>
 
 			</div>
@@ -425,7 +495,7 @@
 			<div class="proPrice">
 				<div class="dealPrice">
 						<span class="gj">¥</span><span class="currentPrice">99</span>
-						<div class="priceDetail"><span class="priceRef">参考价¥339</span> <span class="priceDown">直降&nbsp&nbsp&nbsp&nbsp¥240</span></div>
+						<div class="priceDetail"><span class="priceRef">参考价¥339</span> <span class="priceDown">直降<b></b>¥240</span></div>
 				</div>
 			</div>
 			<div class="active">
@@ -537,9 +607,10 @@
 						
 					</ul>
 				</div>
-				<iframe id="myiframe" scrolling="no" width=818 onload="" frameborder=></iframe>
+				<div id="detailInfo">
+
+				</div>
 				
-			</div>
 			<a href="http://www.jumei.com/i/activity/download_app" class="appUrl"><img src="../../imgs/mobile_sidebar_v3.png"></a>
 		</div>
 	</div>
@@ -549,8 +620,8 @@
 							<li class="isMe">
 								<a href="#"><s></s></a>
 							</li>
-							<li class="liCart">
-								<a href="#" >
+							<li id="liCart">
+								<a href="http://localhost:9999/pages/cart/cart.html" >
 									<s></s>
 									<span class="text">购物车</span>
 									<span class="cart_num">0</span>
@@ -581,173 +652,165 @@
 			</div>
 	
 		</div>
-	<div class="" id="footer">
-		<div class="w1090">
-			<div class="footerTop">
-				<ul>
-					<li>
-						<a href="#">
-							<div class="footlogo"></div>
-							<span>
-								<b>值得信赖美妆电商</b>
-								四千万用户信赖
-							</span>
-						</a>
-					</li>
-
-					<li>
-						<a href="#">
-							<div class="footlogo" style="background-position-x: -63px">
-							</div>
-							<span>
-								<b>成功在美上市</b>
-								股票代码NYSE:JMEI
-							</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<div class="footlogo" style="background-position-x: -126px">
-							</div>
-							<span>
-								<b>品牌防伪码</b>
-								支持品牌官网验真
-							</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<div class="footlogo" style="background-position-x: -189px">
-							</div>
-							<span>
-								<b>百万用户口碑</b>
-								帮你只选对的,不选贵的
-							</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<div class="footlogo" style="background-position-x: -252px">
-							</div>
-							<span>
-								<b>订单闪电发货</b>
-								1.5小时订单急速出库
-							</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<div class="footlogo"></div>
-							<span>
-								<b>大牌明星热荐</b>
-								打造精致明星脸
-							</span>
-						</a>
-					</li>
-				</ul>
-			</div>
-			<div class="footeropt">
-				<ul>
-					<li class="first"><b>服务保障</b></li>
-					<li><a href="#">品牌真品防伪码</a></li>
-					<li><a href="#">正品保证</a></li>
-					<li><a href="#">专属客服服务</a></li>
-					<li><span>总裁邮箱ceo@jumei.com</span></li>
-				</ul>
-				<ul>
-					<li class="first"><b>使用帮助</b></li>
-					<li><a href="#">新手指南</a></li>
-					<li><a href="#">常见问题</a></li>
-					<li><a href="#">帮助中心</a></li>
-					<li><a href="#">用户协议</a></li>
-					<li><a href="#">公示制度</a></li>
-					<li><a href="#">聚美隐私权政策</a></li>
-					<li><a href="#">个人信息管理规则</a></li>
-					<li><a href="#">意见反馈及投诉举报规则</a></li>
-					<li><a href="#">知识产权维权处理规则</a></li>
-				</ul>
-				<ul>
-					<li class="first"><b>支付方式</b></li>
-					<li><a href="#">货到付款</a></li>
-					<li><a href="#">在线支付</a></li>
-					<li><a href="#">余额支付</a></li>
-					<li><a href="#">现金券支付</a></li>
-				</ul>
-				<ul>
-					<li class="first"><b>配送方式</b></li>
-					<li><a href="#">包邮政策</a></li>
-					<li><a href="#">配送说明</a></li>
-					<li><a href="#">运费说明</a></li>
-					<li><a href="#">验货签收</a></li>
-				</ul>
-				<ul>
-					<li class="first"><b>售后服务</b></li>
-					<li><a href="#">正品承诺</a></li>
-					<li><a href="#">售后咨询</a></li>
-					<li><a href="#">退货政策</a></li>
-					<li><a href="#">退货办理</a></li>
-				</ul>
-				<ul class="code">
-					<li class="first"><b>手机聚美</b></li>
-					<span class="mobileApp"></span>
-					<li>下载移动客户端</li>
-				</ul>
-				<ul class="code">
-					<li class="first"><b>聚美微信</b></li>
-					<span class="mobileWx"></span>
-					<li>聚美官方微信</li>
-				</ul>
-
-			</div>
-		</div>
-		<div class="footbg"></div>
-		<div class="footcenter">
-			<div class="w1090">
-				<ul>
-
-					<li><a href="#">关于聚美优品</a></li>
-					<li><a href="#">INVESTOR RELATIONS</a></li>
-					<li><a href="#">合作招商</a></li>
-					<li><a href="#">获取更新</a></li>
-					<li><a href="#">加入聚美</a></li>
-					<li><a href="#">品牌合作专区</a></li>
-					<li><a href="#">网站联盟</a></li>
-					<li><a href="#">媒体报道</a></li>
-					<li><a href="#">商务合作</a></li>
-				</ul>
-			</div>
-		</div>
-		<div class="footbottom">
-			<div class="w1090">
-				<div class="footCon">
-					<p>
-						COPYRIGHT © 2010-2019 北京创锐文化传媒有限公司 JUMEI.COM 保留一切权利。
-						客服热线：400-123-8888
-
-						<br>
-
-						京公网安备 11010102001226 |<a href="#">京ICP证111033号</a>|<a
-							href="#">食品经营许可证</a>|<a href="#">营业执照</a>|<a
-							href="#">ICP许可证</a>|<a href="#">出版物经营许可证</a>|<a
-							href="#">第二类医疗器械经营备案凭证</a>|<a
-							href="#">网络食品交易第三方平台提供者备案信息表</a>|<a href="#">增值电信业务经营许可证</a>
-					</p>
-					<div class="liList">
+	</div>
+		<div class="" id="footer">
+				<div class="w1090">
+					<div class="footerTop">
 						<ul>
-							<li style="background-position-y: -168px"><a href="#"></a></li>
-							<li style="background-position-y: -219px"><a href="#"></a></li>
-							<li style="background-position-y: -270px"><a href="#"></a></li>
-							<li style="background-position-y: -320px"><a href="#"></a></li>
-							<li style="background-position-y: -372px"><a href="#"></a></li>
-							<li class="specialLi"><a href="#"></a></li>
+							<li>
+								<a href="#">
+									<div class="footlogo"></div>
+									<span>
+										<b>值得信赖美妆电商</b>
+										四千万用户信赖
+									</span>
+								</a>
+							</li>
+							
+							<li>
+								<a href="#">
+									<div class="footlogo" style="background-position-x: -63px"></div>
+									<span>
+										<b>成功在美上市</b>
+										股票代码NYSE:JMEI
+									</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<div class="footlogo" style="background-position-x: -126px"></div>
+									<span>
+										<b>品牌防伪码</b>
+										支持品牌官网验真
+									</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<div class="footlogo" style="background-position-x: -189px"></div>
+									<span>
+										<b>百万用户口碑</b>
+										帮你只选对的,不选贵的
+									</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<div class="footlogo" style="background-position-x: -252px"></div>
+									<span>
+										<b>订单闪电发货</b>
+										1.5小时订单急速出库
+									</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<div class="footlogo"></div>
+									<span>
+										<b>大牌明星热荐</b>
+										打造精致明星脸
+									</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="footeropt">
+						<ul>
+								<li class="first"><b>服务保障</b></li>
+								<li><a href="#">品牌真品防伪码</a></li>
+								<li><a href="#">正品保证</a></li>
+								<li><a href="#">专属客服服务</a></li>
+								<li><span>总裁邮箱ceo@jumei.com</span></li>
+					</ul>
+						<ul>
+								<li class="first"><b>使用帮助</b></li>
+								<li><a href="#">新手指南</a></li>
+								<li><a href="#">常见问题</a></li>
+								<li><a href="#">帮助中心</a></li>
+								<li><a href="#">用户协议</a></li>
+								<li><a href="#">公示制度</a></li>
+								<li><a href="#">聚美隐私权政策</a></li>
+								<li><a href="#">个人信息管理规则</a></li>
+								<li><a href="#">意见反馈及投诉举报规则</a></li>
+								<li><a href="#">知识产权维权处理规则</a></li>
+						</ul>
+						<ul>
+								<li class="first"><b>支付方式</b></li>
+								<li><a href="#">货到付款</a></li>
+								<li><a href="#">在线支付</a></li>
+								<li><a href="#">余额支付</a></li>
+								<li><a href="#">现金券支付</a></li>
+						</ul>
+						<ul>
+								<li class="first"><b>配送方式</b></li>
+								<li><a href="#">包邮政策</a></li>
+								<li><a href="#">配送说明</a></li>
+								<li><a href="#">运费说明</a></li>
+								<li><a href="#">验货签收</a></li>
+						</ul>
+						<ul>
+								<li class="first"><b>售后服务</b></li>
+								<li><a href="#">正品承诺</a></li>
+								<li><a href="#">售后咨询</a></li>
+								<li><a href="#">退货政策</a></li>
+								<li><a href="#">退货办理</a></li>
+						</ul>
+						<ul class="code">
+							<li class="first"><b>手机聚美</b></li>
+							<span class="mobileApp"></span>
+							<li>下载移动客户端</li>
+						</ul>
+						<ul class="code">
+							<li class="first"><b>聚美微信</b></li>
+							<span class="mobileWx"></span>
+							<li>聚美官方微信</li>
+						</ul>
+						
+					</div>
+				</div>
+				<div class="footbg"></div>
+				<div class="footcenter">
+					<div class="w1090">
+						<ul class="liList">
+							<li><a href="#">关于聚美优品</a></li>
+							<li><a href="#">INVESTOR RELATIONS</a></li>
+							<li><a href="#">合作招商</a></li>
+							<li><a href="#">获取更新</a></li>
+							<li><a href="#">加入聚美</a></li>
+							<li><a href="#">品牌合作专区</a></li>
+							<li><a href="#">网站联盟</a></li>
+							<li><a href="#">媒体报道</a></li>
+							<li><a href="#">商务合作</a></li>
 						</ul>
 					</div>
 				</div>
+				<div class="footbottom">
+					<div class="w1090">
+							<div class="footCon">
+									<p>
+											COPYRIGHT © 2010-2019 北京创锐文化传媒有限公司 JUMEI.COM 保留一切权利。
+											客服热线：400-123-8888
+											
+										<br>
+						
+											京公网安备 11010102001226 |<a href="#">京ICP证111033号</a>|<a href="#">食品经营许可证</a>|<a href="#">营业执照</a>|<a href="#">ICP许可证</a>|<a href="#">出版物经营许可证</a>|<a href="#">第二类医疗器械经营备案凭证</a>|<a href="#">网络食品交易第三方平台提供者备案信息表</a>|<a href="#">增值电信业务经营许可证</a>
+									</p>
+									<div class="liList">
+										<ul>
+											<li style="background-position-y: -168px"><a href="#"></a></li>
+											<li style="background-position-y: -219px"><a href="#"></a></li>
+											<li style="background-position-y: -270px"><a href="#"></a></li>
+											<li style="background-position-y: -320px"><a href="#"></a></li>
+											<li style="background-position-y: -372px"><a href="#"></a></li>
+											<li class="specialLi"><a href="#"></a></li>
+										</ul>
+									</div>
+							</div>
+					</div>
+					
+					
+				</div>
 			</div>
-
-
-		</div>
-	</div>
 </body>
 
 <script>

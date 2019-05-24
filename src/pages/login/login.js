@@ -88,38 +88,23 @@ require(["../../static/conf/config.js"], function(){
         
         //登陆
         $("#submitButton1").click(function(){
-            console.log($("#telPhone").val()+" "+$("#pwd").val())
+           
             let list=JSON.parse(localStorage.getItem("user"));
+            console.log(list)
              list.forEach(ele=>{
+                 console.log(ele.tel+" "+ele.pwd)
+                 console.log($("#telPhone").val()+" "+$("#pwd").val())
                  if(ele.tel==$("#telPhone").val()&&ele.pwd==$("#pwd").val()){
                     console.log(JSON.stringify({tel:$("#telPhone").val(),pwd:$("#pwd").val()}));
                     sessionStorage.setItem("loginUser",JSON.stringify({tel:$("#telPhone").val(),pwd:$("#pwd").val()}));
                     console.log("写入完成");
                     window.location="http://localhost:9999/pages/home/home.html";
-                 }
-                 if(ele.tel==$("#telPhone").val()&&ele.pwd!=$("#pwd").val()){
+                 }else{
                     $(this).parent().parent().children(".error").show();
                  }
              })     
            
         })
-        function addCookie(key,value) {
-            var now = new Date();
-            now.setDate(now.getDate() + 1);//设置七天之后过期
-            document.cookie = key+"="+value+"; expires="+now;
-        }
         
-        function getCookie(key) {
-            var str = document.cookie; 
-            if(!str) return null;
-            
-            var reg1 = new RegExp(key+"=([^;]+)$");
-            var reg2 = new RegExp(key+"=([^;]+);");
-            if(reg1.test(str)) {
-                return str.match(reg1)[1];
-            } else {
-                return str.match(reg2)[1];
-            }
-        }
 		});
 	})

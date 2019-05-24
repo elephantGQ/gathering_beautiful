@@ -73,7 +73,8 @@
                         <td>
                             <div class="cart_item_total">
                                 <p class="item_total_price"><%-ele.price%></p>
-                                <p>省 <span class="item_saved_price"><%-(ele.preprice-ele.price)%></span></p>
+                                <%let saveMoney=parseInt((ele.preprice-ele.price)*10)/10%>
+                                <p>省 <span class="item_saved_price"><%-saveMoney%></span></p>
                             </div>
                         </td>
                         <td>

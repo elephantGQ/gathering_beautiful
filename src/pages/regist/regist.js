@@ -23,13 +23,13 @@ require(["../../static/conf/config.js"], function(){
             $(this).parent().parent().children(".focus_text").show();
             // console.log( $(this).parent());
             $(this).parent().parent().css({
-                "box-shadow": "0 0 4px rgba(165,212,237,.075)";
+                "box-shadow": "0 0 4px rgba(165,212,237,.075)"
             })
         })
         $("input").on("focusout",function(){
             $(this).parent().parent().children(".focus_text").hide();
             $(this).parent().parent().css({
-                "box-shadow": "0";
+                "box-shadow": "0"
             })
         })
         //输入错误提示信息
@@ -97,6 +97,7 @@ require(["../../static/conf/config.js"], function(){
                     alert("还有未按要求输入的信息");
                 }else{
                     console.log("开始注册");
+                    console.log(localStorage.getItem("user"));
                     let list=JSON.parse(localStorage.getItem("user"));
                     console.log(list)
                     let temp=[];

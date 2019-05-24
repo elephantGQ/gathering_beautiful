@@ -68,15 +68,39 @@
 				<%}})%>
 	
 </script>
+<script id="cartSmall" type="text/html">
+	<%let sum=0%>
+	<%let count=0%>
+	<% _.forEach(data,function(ele,i){%>
+	<div class="cartSingle">
+			<div class="single_pic"><a href="http://localhost:9999/pages/detail/detail.html?item_id=<%-ele.pid%>">
+					
+				<%let imgUrl=ele.pimg.replace(/[0-9]+_[0-9]+/,"60_60").replace("_dx","")%>
+				<img src="<%-imgUrl%>"></a>
+				</div>
+			<div class="single_info">
+				<a href="http://localhost:9999/pages/detail/detail.html?item_id=<%-ele.pid%>">
+					<% let name=ele.pname.substring(0,10)+"..."%>
+					<%-name%>
+				</a>
+				<%count+=ele.count%>
+				<%sum+=ele.count*ele.price%>
+				<span class="price">￥<%-ele.price%></span><span class="price_plus"> x </span><span class="price_num"><%-ele.count%></span></div>
+		</div>
+		<%})%>
+		<%$(".num_all").html(count)%>
+		<%$(".total_price").html(sum)%>
+	</script>
 <script id="mustSeeDiv" type="text/html">
-	 <%console.log(data)%>
-	 <% _.forEach(data,function(ele){%>
+	 <% _.forEach(data,function(ele,i){%>
+		<% if(i<5) {%>
 	<div class="today_tab_content">
 			<a href="#" target="_blank" class="today_tab_link">
 				<% let imgUrl= ele.image_url_set.single.url["480"] %>
 				<% imgUrl= imgUrl.substring(0,58)+"_dx_1500_400.jpg" %>
+				
 				<img border="0" class="all_cart_img" src=<%-imgUrl%> style="">
-				<span class="today_rank_top_1"></span>
+				<span class="today_rank_top_<%-i+1%>"></span>
 			</a>
 			<a href="#" target="_blank" class="global_tip" style="display: none;">
 				<span>海外直采</span><span>海外价格</span><span>闪电发货</span>
@@ -112,6 +136,8 @@
 				</div>
 			</div>
 		</div>
+		
+		<%}%>
 		<%})%>
 </script>
 <body>
@@ -212,7 +238,35 @@
 							</div>
 					
 					<div class="shopCar">
-						<a href="#"><div class="carImg"><img src="../../imgs/cart.gif" ></div><span>去购物车结算<em class="iconfont icon-icon-arrowdown-expa"></em></span></a>
+						<a href="http://localhost:9999/pages/cart/cart.html" class="cartExtend"><div class="carImg"><img src="../../imgs/cart.gif" ></div><span>去购物车结算<em class="iconfont icon-icon-arrowdown-expa"></em></span></a>
+						<div class="shopCartBox">
+							<div class="Boxheader">
+								<span>20分钟</span>后购物车将被清空请及时结算
+							</div>
+							<div id="cart_content">
+								<!-- 
+									<div class="cartSingle">
+										
+											<div class="single_pic"><a href="http://sh.jumei.com/i/deal/d190524p68578.html?from=home_cart_float" target="_blank" alt="花印水漾洁净洗面乳150g">
+													<img src="https://p1.jmstatic.com/product/000/068/68578_std/68578_60_60.jpg"></a>
+												</div>
+											<div class="single_info">
+												<a href="http://sh.jumei.com/i/deal/d190524p68578.html?from=home_cart_float" target="_blank" alt="花印水漾洁净洗面乳150g" class="name">
+													花印水漾洁净洗面乳150g
+												</a>
+													
+												<span class="price">￥39.00</span><span class="price_plus"> x </span><span class="price_num">1</span></div>
+										</div>
+									 -->
+							</div>
+							<div class="cartBottom">
+								<div class="cartLeft">
+										<div class="price_whole"><span>共<span class="num_all">5</span>件商品</span></div>
+										<span class="price_gongji">共计<em>￥</em><span class="total_price">535</span></span>
+								</div>
+								<div class="cartRight"> <a href="#" class="gwc">去购物车结算</a></div>
+							</div>
+						</div>
 					</div>
 				</div>
 				
@@ -357,15 +411,15 @@
 					</div>
 					<div class="todayOpt">
 						<ul class="todayUl">
-							<li><a href="#"><img src="../../imgs/5cdb769d7b8de_535_212.jpg"></img></a></li>
-							<li><a href="#"><img src="../../imgs/5cdb8be7bb9db_535_212.jpg"></img></a></li>
-							<li><a href="#"><img src="../../imgs/5cdbc7f420071_535_212.jpg"></img></a></li>
-							<li><a href="#"><img src="../../imgs/5cda4fed8ef8d_535_212.jpg"></img></a></li>
-							<li><a href="#"><img src="../../imgs/5cdbaa2827928_535_212.jpg"></img></a></li>
-							<li><a href="#"><img src="../../imgs/5cdb7f311dbca_535_212.jpg"></img></a></li>
-							<li><a href="#"><img src="../../imgs/5cda73b25aebc_535_212.jpg"></img></a></li>
-							<li><a href="#"><img src="../../imgs/5cd29d484cc75_535_212.jpg"></img></a></li>
-							<li><a href="#"><img src="../../imgs/5cd50a2aba35f_535_212.jpg"></img></a></li>
+							<li><a href="#"><div></div><img src="../../imgs/5cdb769d7b8de_535_212.jpg"></img></a></li>
+							<li><a href="#"><div></div><img src="../../imgs/5cdb8be7bb9db_535_212.jpg"></img></a></li>
+							<li><a href="#"><div></div><img src="../../imgs/5cdbc7f420071_535_212.jpg"></img></a></li>
+							<li><a href="#"><div></div><img src="../../imgs/5cda4fed8ef8d_535_212.jpg"></img></a></li>
+							<li><a href="#"><div></div><img src="../../imgs/5cdbaa2827928_535_212.jpg"></img></a></li>
+							<li><a href="#"><div></div><img src="../../imgs/5cdb7f311dbca_535_212.jpg"></img></a></li>
+							<li><a href="#"><div></div><img src="../../imgs/5cda73b25aebc_535_212.jpg"></img></a></li>
+							<li><a href="#"><div></div><img src="../../imgs/5cd29d484cc75_535_212.jpg"></img></a></li>
+							<li><a href="#"><div></div><img src="../../imgs/5cd50a2aba35f_535_212.jpg"></img></a></li>
 						</ul>
 					</div>
 		</div>
@@ -470,7 +524,7 @@
 							<a href="#"><s></s></a>
 						</li>
 						<li id="liCart">
-							<a href="#" >
+							<a href="http://localhost:9999/pages/cart/cart.html" >
 								<s></s>
 								<span class="text">购物车</span>
 								<span class="cart_num">0</span>
