@@ -1032,6 +1032,153 @@ body{
     }
     
 }
+.bigCart{
+	display: none;
+	position: fixed;
+	width: 318px;
+	height:100%;
+	top:0;
+	right:40px;
+	z-index: 50;
+	background: #fff;
+	.bigCartTop{
+		width: 296px;
+		height: 42px;
+		line-height: 42px;
+		margin: 0 auto;
+		font-size: 12px;
+		font-weight: bold;
+		border-bottom: 1px solid #ccc;
+		span{
+			font-size: 14px;
+			font-weight: bold;
+		}
+		a{
+			display: block;
+			width: 20px;
+			height: 20px;
+			background: url(../../../imgs/ibar_sprites.png) no-repeat center center;
+			background-position: 0 -272px;
+			float: right;
+			margin-top: 10px;
+		}
+	}
+	.cartContent{
+		 height: 688px;
+		overflow: auto;
+		margin-left: 10px;
+		.bigCartHeader{
+			width: 296px;
+			height: 38px;
+			line-height: 38px;
+			font-size: 12px;
+			font-weight: bold;
+			border-bottom: 1px solid #ccc;
+		}
+		.productBox{
+			.productSingle{
+				width:100%;	
+				height: 129px;
+				float: left;
+				border-bottom: 1px dashed #ccc;
+				.item_pic{
+					margin-top: 14px;
+					height: 102px;
+					width: 102px;
+					float: left;
+					a{
+						display: block;
+						width: 100px;
+						height:100px;
+						border: 1px solid #ccc;
+						img{
+							height: 100px;
+							width: 100px;
+						}
+					}
+				}
+				.item_desc{
+					float: left;
+					width: 170px;
+					height: 129px;
+					padding-top: 18px;
+					padding-left: 10px;
+					.item_name{
+						font-size: 12px;
+						color:#5c5c5c;
+						span{
+							color:#9437a4;
+							font-weight: bold;
+						}
+					}
+					.cart_item_price{
+						margin-top:20px;
+						font-size:12px;
+						color:#ccc;
+						.unit_price{
+							font-size: 16px;
+							font-weight: bold;
+							color:#ee2668;
+						}
+					}
+				}
+			}
+		}
+		
+	}
+	.cartBottom{
+		padding-top:45px;
+	height: 100px;
+    width: 318px;
+    background: #f9f9f9;
+		.cartLeft{
+			height: 68px;
+			width: 100px;
+			margin-left: 16px;
+			float: left;
+			.price_whole{
+				display: block;
+				height: 36px;
+				line-height: 36px;
+				font-size: 12px;
+				color:black;
+				.num_all{
+					color: #ed145b;
+					font-weight: bold;
+					font-size: 14px;
+				}
+			}
+			.price_gongji{
+				font-size: 12px;
+				color:black;
+				em{
+					color: #ed145b;
+					font-weight: bold;
+				}
+				.total_price{
+					color: #ed145b;
+					font-weight: bolder;
+					font-size: 15px;
+				}
+			}
+		}
+		.cartRight{
+			float: right;
+			.gwc{
+				height: 26px;
+				width: 98px;
+				display: block;
+				background: #f92a6e;
+				line-height: 26px;
+				text-align: center;
+				margin: 22px 11px 0 0 ;
+				font-size: 12px;
+				color:#fff;
+				border: solid 1px #e00a50;
+			}
+		}
+	}
+}
 #left_bar{
 	z-index: 9990;
     right: 0px;

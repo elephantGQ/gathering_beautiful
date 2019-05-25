@@ -41,6 +41,39 @@ function changeSize(){
 		<%$(".num_all").html(count)%>
 		<%$(".total_price").html(sum)%>
 	</script>
+	<script id="cartBig" type="text/html">
+		<%let sum=0%>
+		<%let count=0%>
+		<% _.forEach(data,function(ele,i){%>
+		<li class="productSingle">
+				<div class="item_pic">
+					<a  href="#">
+					<%let imgUrl=ele.pimg.replace(/[0-9]+_[0-9]+/,"100_100").replace("_dx","")%>
+					<img src="<%-imgUrl%>"></a>
+					</a>
+				</div>
+				<div class="item_desc">
+					<span class="item_name">
+					<span class="item_global" style="display: inline;">[极速免税]</span>
+					<a class="ibar_cart_item_name" href="#">
+							<% let name=ele.pname.substring(0,10)+"..."%>
+							<%-name%>
+					</a>
+					<%count+=ele.count%>
+					<%sum+=ele.count*ele.price%>
+					</span>
+			
+					<div class="cart_item_price">
+						<span class="unit_price">￥<%-ele.price%></span>
+						<span class="unit_plus"> x </span>
+						<span class="ibar_cart_item_count"><%-ele.count%></span>
+					</div>
+				</div>
+			</li>
+			<%})%>
+			<%$(".num_all").html(count)%>
+			<%$(".total_price").html(sum)%>
+		</script>
 <script id="temp_product" type="text/html">
 	<div class="w1090">
 			<span id="pidHiddle" no=<%-data.product_id%>></span>
@@ -614,6 +647,48 @@ function changeSize(){
 			<a href="http://www.jumei.com/i/activity/download_app" class="appUrl"><img src="../../imgs/mobile_sidebar_v3.png"></a>
 		</div>
 	</div>
+	<div class="bigCart">
+			<div class="bigCartTop">
+				<span>购物车</span> 已超时请尽快结算
+				<a class="close"></a>
+			</div>
+			
+			<div class="cartContent">
+
+				<div class="bigCartHeader">聚美优品</div>	
+				<ul class="productBox">
+					<li class="productSingle">
+						<div class="item_pic">
+							<a  href="#">
+								<img src="https://p0.jmstatic.com/product/003/980/3980124_std/3980124_100_100.jpg" >
+							</a>
+						</div>
+						<div class="item_desc">
+							<span class="item_name">
+							<span class="item_global" style="display: inline;">[极速免税]</span>
+							<a class="ibar_cart_item_name" href="#">城野医生孔对策护肤2件套</a>
+							</span>
+					
+							<div class="cart_item_price">
+								<span class="unit_price">￥95</span>
+								<span class="unit_plus"> x </span>
+								<span class="ibar_cart_item_count">1</span>
+							</div>
+						</div>
+					</li>
+				
+					
+				</ul>
+				
+			</div>
+			<div class="cartBottom">
+					<div class="cartLeft">
+							<div class="price_whole"><span>共<span class="num_all">9</span>件商品</span></div>
+							<span class="price_gongji">共计<em>￥</em><span class="total_price">595.5</span></span>
+					</div>
+					<div class="cartRight"> <a href="#" class="gwc">去购物车结算</a></div>
+				</div>			
+</div>
 	<div id="left_bar">
 			<div class="barMain">
 					<ul class="barCenter">
@@ -621,7 +696,7 @@ function changeSize(){
 								<a href="#"><s></s></a>
 							</li>
 							<li id="liCart">
-								<a href="http://localhost:9999/pages/cart/cart.html" >
+									<a class="bigCartExtend">
 									<s></s>
 									<span class="text">购物车</span>
 									<span class="cart_num">0</span>

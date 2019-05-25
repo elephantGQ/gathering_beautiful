@@ -11,6 +11,18 @@ require(["../../static/conf/config.js"], function(){
 			var str=compiled({"data":productList});
 			console.log(str);
 			$("#cart_content").html(str);
+
+			var compiled=_.template($("#cartBig").text())
+			var str=compiled({"data":productList});
+			console.log(str);
+			$(".productBox").html(str);
+			//大购物车
+			$(".bigCartExtend").click(function(){
+					$(".bigCart").show();
+			})
+			$(".close").click(function(){
+				$(".bigCart").hide();
+			})
 			//小购物车展开
 			$(".shopCar").mouseenter(function(){
 				$(".shopCartBox").show();
