@@ -5,14 +5,26 @@ require(["../../static/conf/config.js"], function(){
 			if(loginUser){
 				$(".isLogin").html(`<li>${loginUser.tel}</li><li><a href="#" class="loginOut">退出</a></li>`);
 			}
-			//获取购物车
+			//获取小购物车
 			let productList=JSON.parse(localStorage.getItem("cart"));
 			console.log(productList);
 			var compiled=_.template($("#cartSmall").text())
 			var str=compiled({"data":productList});
-			console.log(str);
+			// console.log(str);
 			$("#cart_content").html(str);
-
+			//获取大购物车
+			
+			var compiled=_.template($("#cartBig").text())
+			var str=compiled({"data":productList});
+			console.log(str);
+			$(".productBox").html(str);
+			//大购物车
+			$(".bigCartExtend").click(function(){
+					$(".bigCart").show();
+			})
+			$(".close").click(function(){
+				$(".bigCart").hide();
+			})
 			//小购物车展开
 			$(".shopCar").mouseenter(function(){
 				$(".shopCartBox").show();
